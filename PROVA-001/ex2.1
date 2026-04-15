@@ -1,0 +1,63 @@
+tamanho_largura = ""
+while tamanho_largura == "":
+    largura = float(input("Digite a largura da camiseta do usuário: "))
+    if largura >= 20 and largura <= 25:
+        tamanho_largura = "P"
+        valor_largura = 1
+    elif largura >= 26 and largura <= 30:
+        tamanho_largura = "M"
+        valor_largura = 2
+    elif largura >= 31 and largura <= 35:
+        tamanho_largura = "G"
+        valor_largura = 3
+    elif largura >= 36 and largura <= 40:
+        tamanho_largura = "XG"
+        valor_largura = 4
+    elif largura >= 41 and largura <= 45:
+        tamanho_largura = "XXG"
+        valor_largura = 5
+    elif largura >= 46 and largura <= 50:
+        tamanho_largura = "3X"
+        valor_largura = 6
+    elif largura >= 51 and largura <= 55:
+        tamanho_largura = "4X"
+        valor_largura = 7
+    else:
+        print("Largura fora da tabela! Digite novamente...")
+
+tamanho_altura = ""
+while tamanho_altura == "":
+    altura = float(input("Digite a altura da camiseta do usuário: "))
+    if altura >= 25 and altura <= 30:
+        tamanho_altura = "P"
+        valor_altura = 1
+    elif altura >= 31 and altura <= 35:
+        tamanho_altura = "M"
+        valor_altura = 2
+    elif altura >= 36 and altura <= 40:
+        tamanho_altura = "G"
+        valor_altura = 3
+    elif altura >= 41 and altura <= 45:
+        tamanho_altura = "XG"
+        valor_altura = 4
+    elif altura >= 46 and altura <= 50:
+        tamanho_altura = "XXG"
+        valor_altura = 5
+    elif altura >= 51 and altura <= 55:
+        tamanho_altura = "3X"
+        valor_altura = 6
+    elif altura >= 56 and altura <= 60:
+        tamanho_altura = "4X"
+        valor_altura = 7
+    else:
+        print("Altura fora da tabela! Digite novamente...")
+
+if valor_largura > valor_altura:
+    tamanho_final = tamanho_largura
+else:
+    tamanho_final = tamanho_altura
+
+print("RESULTADO")
+print("Tamanho Largura: ",tamanho_largura)
+print("Tamanho Altura: ",tamanho_altura)
+print("Tamanho Final: ",tamanho_final)

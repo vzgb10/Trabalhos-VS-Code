@@ -1,0 +1,71 @@
+tamanho_largura = ""
+
+while (tamanho_largura == ""):
+    largura = float(input("Digite a largura da camiseta do usuário: "))
+    
+    if (20 <= largura <= 25):
+        tamanho_largura = "P"
+        valor_largura = 1
+    elif (26 <= largura <= 30):
+        tamanho_largura = "M"
+        valor_largura = 2
+    elif (31 <= largura <= 35):
+        tamanho_largura = "G"
+        valor_largura = 3
+    elif (36 <= largura <= 40):
+        tamanho_largura = "XG"
+        valor_largura = 4
+    elif (41 <= largura <= 45):
+        tamanho_largura = "XXG"
+        valor_largura = 5
+    elif (46 <= largura <= 50):
+        tamanho_largura = "3X"
+        valor_largura = 6
+    elif (51 <= largura <= 55):
+        tamanho_largura = "4X"
+        valor_largura = 7
+    else:
+        print("Largura fora da tabela!")
+
+tamanho_altura = ""
+
+while tamanho_altura == "":
+    altura = float(input("Digite a altura da camiseta do usuário: "))
+
+    if (25 <= altura <= 30):
+        tamanho_altura = "P"
+        valor_altura = 1
+    elif (31 <= altura <= 35):
+        tamanho_altura = "M"
+        valor_altura = 2
+    elif (36 <= altura <= 40):
+        tamanho_altura = "G"
+        valor_altura = 3
+    elif (41 <= altura <= 45):
+        tamanho_altura = "XG"
+        valor_altura = 4
+    elif (46 <= altura <= 50):
+        tamanho_altura = "XXG"
+        valor_altura = 5
+    elif (51 <= altura <= 55):
+        tamanho_altura = "3X"
+        valor_altura = 6
+    elif (56 <= altura <= 60):
+        tamanho_altura = "4X"
+        valor_altura = 7
+    else:
+        print("Altura fora da tabela!")
+
+if tamanho_largura > tamanho_altura:
+    tamanho_final = tamanho_largura
+else:
+    tamanho_final = tamanho_altura
+
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    print("RESULTADO")
+    print("Tamanho Largura: ",tamanho_largura)
+    print("Tamanho Altura: ",tamanho_altura)
+    print("Tamanho Final: ",tamanho_final)
+
+
+    # DEU ERRO NÃO SEI POR QUE !!!!!!!!!!!!!!!!!!

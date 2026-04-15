@@ -1,0 +1,46 @@
+participantes = int(input("Digite o número de participantes: "))
+
+soma_idade = 0
+idade_min = 1000
+idade_max = -1000
+
+tipo_a = 0
+tipo_m = 0
+tipo_c = 0
+i = 0
+
+while (i < participantes):
+    print("Participante", {i+1},": ")
+    
+    idade = int(input("Qual a sua idade? "))
+    atividade = input("Qual atividade você mais gosta, (A, M OU C)? ")
+
+    soma_idade += idade
+
+    if (idade < idade_min):
+        idade_min = idade
+    if (idade > idade_max):
+        idade_max = idade
+
+    if (atividade == "A"):
+        tipo_a += 1
+    elif (atividade == "M"):
+        tipo_m += 1
+    elif (atividade == "C"):
+        tipo_c += 1
+    
+    i += 1
+
+media_idade = soma_idade/participantes
+pa = tipo_a*100/participantes
+pm = tipo_m*100/participantes
+pc = tipo_c*100/participantes
+
+print("RESULTADOS")
+print("Foram realizados",participantes,"amostragens")
+print("Idade mínima: ",idade_min)
+print("Idade máxima: ",idade_max)
+print("Idade média: ",media_idade)
+print("Percentual Aventura: ",pa,"%")
+print("Percentual Montanha Russa: ",pm,"%")
+print("Percentual Clássicos: ",pc,"%")

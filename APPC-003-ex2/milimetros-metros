@@ -1,0 +1,6 @@
+# IV) CONVERTER MILÍMETROS EM METROS
+
+milimetros = float(input("Valor em milímetros: "))
+metros=milimetros/1000
+
+print(f"O valor em metros é: {metros} m")

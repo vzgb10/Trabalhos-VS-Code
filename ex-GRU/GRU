@@ -1,0 +1,79 @@
+f = int(input("Digite o número de funcionários: "))
+
+folha = 0
+pecas = 0
+total_minimo = 0
+q_minimo = 0
+q_acima = 0
+i = 0
+
+while i < f:
+    print(f"\nFuncionário {i+1}")
+    nivel = ""
+    while nivel != "1" and nivel != "2" and nivel != "3":
+        nivel = input("Digite o nível (1, 2 ou 3): ")
+        if nivel != "1" and nivel != "2" and nivel != "3":
+            print("Nível inválido! Tente novamente.")
+
+    producao = -1
+    while producao < 0:
+        try:
+            producao = int(input("Digite a produção diária: "))
+            if producao < 0:
+                print("Digite um valor positivo.")
+        except:
+            print("Entrada inválida! Digite um número inteiro.")
+            producao = -1
+
+    if nivel == "1":
+        salario_base = 1000
+        p_minimo = 20
+        bonus = 100
+    elif nivel == "2":
+        salario_base = 3000
+        p_minimo = 40
+        bonus = 400
+    else:
+        salario_base = 7000
+        p_minimo = 60
+        bonus = 900
+
+    if producao > p_minimo:
+        acrescimo = (producao - p_minimo) * bonus
+        q_acima += 1
+    else:
+        acrescimo = 0
+        q_minimo += 1
+
+    salario_total = salario_base + acrescimo
+
+    folha += salario_total
+    pecas += producao
+    total_minimo += p_minimo
+
+    print(f"Salário base: R$ {salario_base:.2f}")
+    print(f"Acréscimo: R$ {acrescimo:.2f}")
+    print(f"Salário total: R$ {salario_total:.2f}")
+
+    i += 1
+
+print("*********************************************************************")
+
+print("\n--- FINAL ---")
+
+print(f"Total da folha de pagamento: R$ {folha:.2f}")
+
+print(f"Total de peças produzidas: {pecas}")
+
+print(f"Total mínimo esperado: {total_minimo}")
+
+print(f"Funcionários com produção mínima: {q_minimo}")
+
+print(f"Funcionários acima da produção mínima: {q_acima}")
+
+perc_min = (q_minimo / f) * 100
+perc_acima = (q_acima / f) * 100
+
+print(f"Percentual com produção mínima: {perc_min:.2f}%")
+
+print(f"Percentual acima da produção mínima: {perc_acima:.2f}%")

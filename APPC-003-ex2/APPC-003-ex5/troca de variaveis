@@ -1,0 +1,18 @@
+# TROCAR OS VALORES DAS VARIÁVEIS
+
+x = int(input("Digite o valor de X: "))
+y = int(input("Digite o valor de y: "))
+
+print("_______________________________________________")
+
+print("Antes:")
+print("X =", x)
+print("Y =", y)
+
+x, y=y, x
+
+print("_______________________________________________")
+
+print("Depois:")
+print("X -", x)
+print("Y =", y)

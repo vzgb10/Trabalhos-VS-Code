@@ -1,0 +1,75 @@
+pacientes = int(input("Digite o número de pacientes: "))
+
+cont = 1
+
+soma_idade = 0
+idade_min = 1000
+idade_max = -1000
+
+cardiologia = 0
+neurologia = 0
+traumatologia = 0
+pediatria = 0
+
+try:
+    while (cont<=pacientes):
+        print("\npaciente ",cont)
+
+        idade = int(input("Digite a idade: "))
+        peso = float(input("Digite o peso: "))
+        altura = float(input("Digite a altura: "))
+
+        imc = peso / (altura**2)
+
+        print("----------------------------------------------------------")
+        print("Especialidades:")
+        print("1 - Cardiologia")
+        print("2 - Neurologia")
+        print("3 - Traumatologia")
+        print("4 - Pediatria")
+
+        especialidade = int(input("Digite o número da especialidade: "))
+
+        soma_idade += idade
+
+        if idade < idade_min:
+            idade_min = idade
+        if idade > idade_max:
+            idade_max = idade
+
+        if especialidade == 1:
+            cardiologia += 1
+        elif especialidade == 2:
+            neurologia += 1 
+        elif especialidade == 3:
+            traumatologia +=1
+        elif especialidade == 4:
+            pediatria += 1
+        else:
+            print("Opção inválida!")
+        
+        cont += 1
+
+    idade_media = soma_idade / pacientes
+
+    pc = cardiologia*100/pacientes
+    pn = neurologia*100/pacientes
+    pt = traumatologia*100/pacientes
+    pp = pediatria*100/pacientes
+
+    print("----------------------------------------------------------")
+    print("\nRESULTADOS")
+    
+    print(f"IMC do paciente: {imc:.1f}")
+    
+    print(f"Idade média: {idade_media:.1f}")
+    print("Idade mínima: ",idade_min)
+    print("Idade máxima: ",idade_max)
+
+    print(f"Percentual Cardiologia: {cardiologia:.1f}")
+    print(f"Percentual Neurologia: {pn:.1f}")
+    print(f"Pencentual Traumologia: {pt:.1f}")
+    print(f"Percentual Pediatria: {pp:.1f}")
+
+except:
+    print("INFORMAÇÕES INVÁLIDAS!")

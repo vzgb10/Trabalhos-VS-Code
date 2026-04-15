@@ -1,0 +1,22 @@
+# CALCULAR O VALOR DE UMA COMPRA DE PRODUTOS COM DESCONTO
+
+quantidade = int(input("Digite a quantidade de produtos: "))
+valor_unitario = float(input("Digite o valor unitário: "))
+
+total=quantidade*valor_unitario
+
+if total > 1000:
+    desconto=total*0.1
+else:
+    desconto=0
+
+final=total-desconto
+
+print("______________________________________________")
+
+print("Resumo da compra:")
+print(f"Valor total: R${total:0.2f}")
+print(f"Desconto aplicado: R${desconto:0.2f}")
+print(f"Valor final: R${final:0.2f}")
+
+print("______________________________________________")

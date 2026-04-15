@@ -1,0 +1,18 @@
+# CALCULAR PENCENTUAL DE ESPECTADORES POR CANAL
+print("____________________________________________________________")
+
+yutubuz = int(input("Número de espectadores no Yutubuz: "))
+faycy_buky = int(input("Número de espectadores no Faycy Buky: "))
+xz = int(input("Números de espectadores no Xz: "))
+ynztagran = int(input("Número de espectadores no Ynztagran: "))
+
+total=yutubuz+faycy_buky+xz+ynztagran
+
+print("____________________________________________________________")
+
+print("Pencentual de audiência em cada canal: ")
+
+print(f"Yutubuz: {(yutubuz/total)*100:0.1f} %")
+print(f"Faycy Buky: {(faycy_buky/total)*100:0.1f} %")
+print(f"Xz: {(xz/total)*100:0.1f} %")
+print(f"Ynztagran: {(ynztagran/total)*100:0.1f} %")

@@ -1,0 +1,9 @@
+# w = escrita (write)
+# a = adicionar..
+# enconding=UTFS
+try:
+    with open("teste4.txt", "r", encoding= "UTF-8") as arq:
+        cont=arq.read()
+        print(cont)
+except FileNotFoundError:
+    print("NADA NÃO")

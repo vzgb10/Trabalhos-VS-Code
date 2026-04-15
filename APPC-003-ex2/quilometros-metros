@@ -1,0 +1,6 @@
+# V) CONVERTER QUILÔMETROS PARA METROS
+
+quilometros = float(input("Valor em quilômetros: "))
+metros=quilometros*1000
+
+print(f"O valor em metros é: {metros} m")

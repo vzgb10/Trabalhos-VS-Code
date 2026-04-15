@@ -1,0 +1,20 @@
+# CALCULAR SALÁRIO LÍQUIDO
+
+ht = float(input("Digitar quantidade de horas trabalhadas: "))
+sh = float(input("Digitar valor do salário por hora: "))
+
+sb=ht*sh
+
+da=sb*0.1
+dir=sb*0.05
+
+sl=sb-da-dir
+
+print("_________________________________________________________")
+
+print(f"Salário Bruto: R${sb:0.2f}")
+print(f"Desconto da Aposentadoria: R${da:0.2f}")
+print(f"Desconto do Imposto de Renda: R${dir:0.2f}")
+print(f"Salário Líquido: R${sl:0.2f}")
+
+print("_________________________________________________________")

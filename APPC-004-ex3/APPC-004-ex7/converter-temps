@@ -1,0 +1,44 @@
+#CONVERTER TODAS AS TEMPERATURAS
+
+print("Escalas disponíveis:")
+print("1 - Celsius")
+print("2 - Fahrenheit")
+print("3 - Kelvin")
+print("4 - Rankine")
+print("5 - Réaumur")
+
+print("******************************************************")
+
+origem = int(input("Escolha a escala de origem: "))
+destino = int(input("Escolha a escala de destino: "))
+temp = float(input("Escolha a temperatura: "))
+
+if origem==1:
+    c=temp
+elif origem==2:
+    c=(temp-32)*5/9
+elif origem==3:
+    c=temp-273.15
+elif origem==4:
+    c=(temp-491.67)*5/9
+elif origem==5:
+    c=temp*1.25
+else:
+    print("Escala de origem inválida.")
+
+if destino==1:
+    total=c
+elif destino==2:
+    total=(c*9/5)+32
+elif destino==3:
+    total=c+273.15
+elif destino==4:
+    total=(c+273.15)*9/5
+elif destino==5:
+    total=c*0.8
+else:
+    print("Escala de destino inválida")
+
+print("Temperatura convertida: {total:.1}")
+
+print("******************************************************")

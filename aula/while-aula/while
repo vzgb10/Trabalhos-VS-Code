@@ -1,0 +1,9 @@
+# IMPRIMIR AS VOGAIS DE UMA STRING
+
+nome = input("Digite o seu nome: ")
+pos=0
+
+while(pos<=len(nome)):
+    if((nome[pos]=="a")or(nome[pos]=="e")or(nome[pos]=="i")or(nome[pos]=="o")or(nome[pos]=="u")):
+        print("pos =",pos,"\t  ",nome[pos])
+    pos=pos+1

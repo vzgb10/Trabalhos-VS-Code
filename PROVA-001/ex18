@@ -1,0 +1,48 @@
+try:
+    distancia = float(input("Digite a distância a ser percorrida (km): "))
+    custo = float(input("Digite o custo por km: "))
+
+    cbu = distancia * custo
+    
+    quant = 1
+
+    bilhete = int(input("Digite a quantidade de bilhetes comprados: "))
+
+    if bilhete == 1:
+        desconto1 = 0
+    elif bilhete >=2 and bilhete <= 5:
+        desconto1 = 5
+    elif bilhete >= 6 and bilhete <= 10:
+        desconto1 = 15
+    else:
+        desconto1 = 30
+
+    while (quant<=bilhete):
+        print("Bilhete ",quant,":")
+        idade = int(input("Digite a idade do passageiro: "))
+
+        if idade <= 5:
+            desconto2 = 20
+        elif idade >= 6 and idade <= 10:
+            desconto2 = 15
+        elif idade >= 11 and idade <= 16:
+            desconto2 = 10
+        elif idade >= 17 and idade <= 59:
+            desconto2 = 0
+        else:
+            desconto2 = 30
+
+        quant += 1
+
+    valor_total = cbu * bilhete
+    desconto_total = (desconto1 / 100) + (desconto2 / 100)
+    valor_final = valor_total + desconto_total
+
+except:
+    print("Ops, algo deu errado")
+
+print("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+print("RESULTADOS")
+print("Custo de Base Unitário: ",cbu)
+print("Total de desconto: ",desconto_total)
+print("Valor Final: ",valor_final)

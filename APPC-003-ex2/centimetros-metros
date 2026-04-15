@@ -1,0 +1,10 @@
+# II) CONVERTER CENTÍMETROS PARA METROS
+
+centimetros = float(input("Valor em centímetros: "))
+metros=centimetros/100
+
+print("_____________________________________")
+
+print(f"O valor em metros é de: {metros} m")
+
+print("_____________________________________")

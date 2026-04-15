@@ -1,0 +1,21 @@
+frase = input("Digite sua sequencia numérica: ")
+
+cont = 0
+cont_0_5 = 0
+cont_6_9 = 0
+
+try:
+    while (cont<len(frase)):
+        c = int(frase[cont])
+        if (c>=0) and (c<=5):
+            cont_0_5 += 1
+        if (c>=6) and (c<=9):
+            cont_6_9 += 1
+
+        cont += 1
+
+    print("Quantidade de valores entre 0 e 5: ",cont_0_5)
+    print("Quantidade de valores entre 6 e 9: ", cont_6_9)
+
+except:
+    print("ERRO! Digite somente números...")

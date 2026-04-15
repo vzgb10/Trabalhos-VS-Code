@@ -1,0 +1,9 @@
+frase = input("Digite sua string desejada: ")
+
+numero = 0
+
+while (numero<len(frase)):
+    
+    numero += 1
+
+print("O número de caracteres da string é: ",numero)

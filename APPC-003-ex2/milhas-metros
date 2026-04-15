@@ -1,0 +1,6 @@
+# XIII) CONVERTER MILHAS EM METROS
+
+milhas = float(input("Valor em milhas: "))
+metros=milhas*1609
+
+print(f"O valor em metros é: {metros:0.2f}")

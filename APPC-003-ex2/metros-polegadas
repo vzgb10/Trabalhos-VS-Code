@@ -1,0 +1,6 @@
+# VI) CONVERTER METROS PARA POLEGADAS
+
+metros = float(input("Valor em metros: "))
+polegadas=metros*39.37
+
+print(f"O valor em polegadas é: {polegadas}")

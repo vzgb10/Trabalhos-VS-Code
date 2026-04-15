@@ -1,0 +1,16 @@
+#6 Desenvolva um algoritmo e efetue a implementação em Python, para calcular o dia com a menor
+#  temperatura prevista para o processo de fermentação de acordo com a equação definida pelo enólogo.
+
+d = 0
+menor_dia = 0
+temperatura = 0.011 * d**3 - 0.3 * d**2 + 0.04 * d
+
+while d <= 30:
+    T = 0.011 * d**3 - 0.3 * d**2 + 0.04 * d
+    if T < temperatura:
+        temperatura = T
+        menor_dia = d
+    d += 1
+
+print("Dia com menor temperatura: ",menor_dia)
+print("Menor temperatura: ",temperatura)

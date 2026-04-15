@@ -1,0 +1,6 @@
+# XI) CONVERTER PÉS PARA METROS
+
+pes = float(input("Valor em pés: "))
+metros=pes/3.281
+
+print(f"O valor em metros é: {metros:0.2f} m")

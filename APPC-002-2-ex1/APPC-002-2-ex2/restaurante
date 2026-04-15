@@ -1,0 +1,24 @@
+# CALCULAR O VALOR A SER PAGO
+
+porcao = float(input("Digite o valor da porção: "))
+quantidade = int(input("Digite a quantidade de porções pedidas: "))
+
+bruto=porcao*quantidade
+
+desconto=quantidade*0.02
+vd=bruto*desconto                   # valor desconto
+da=bruto-vd                         # desconto aplicado
+
+couvert=20
+subtotal=da+couvert
+
+ts=subtotal*0.1                     # taxa de serviço
+total=subtotal+ts
+
+print("________________________________________________________________")
+print(f"Valor bruto das porções: RP${bruto:0.2f}")
+print(f"Valor após desconto: RP${da:0.2f}")
+print(f"Subtotal: RP${subtotal:0.2f}")
+print("----------------------------------------------------------------")
+print(f"Total a pagar: RP${total:0.2f}")
+print("________________________________________________________________")

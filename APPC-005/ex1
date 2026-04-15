@@ -1,0 +1,10 @@
+#1 Desenvolva um algoritmo e efetue a implementação em Python para ler dois valores e imprimir os valores inteiros no intervalo.
+
+x = int(input("Digite o valor de x: "))
+valor2 = int(input("Digite o segundo valor: "))
+
+print("***************************************")
+while(x<=valor2):
+    print("x =",x)
+    x=x+1
+print("***************************************")

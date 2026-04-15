@@ -1,0 +1,6 @@
+# IX) CONVERTER DECÍMETROS PARA METROS
+
+decimetros = float(input("Valor em decímetros: "))
+metros=decimetros/10
+
+print(f"O valor em metros é: {metros} m")

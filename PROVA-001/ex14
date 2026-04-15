@@ -1,0 +1,23 @@
+try:
+    codigo = input("Digite seu código: ")
+
+    if len(codigo) != 7:
+        print("Código inválido! Digite 7 digitos...")
+    else:
+        soma = 0
+        pos = 0
+
+        while (pos<6):
+            soma += int(codigo[pos])
+            pos += 1
+
+        verificador = soma % 10
+        final = int(codigo[pos])
+
+        if verificador == final:
+            print("CÓDIGO VALIDO")
+        else: 
+            print("CÓDIGO INVÁLIDO!")
+
+except:
+    print("Ops, algo deu errado. Digite apenas números.")

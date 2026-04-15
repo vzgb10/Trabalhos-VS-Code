@@ -1,0 +1,27 @@
+#3 Utilizando o código do exercício anterior, desenvolva um algoritmo e efetue a implementação em Python 
+# para ler n valores e imprimir o valor médio, o maior e o menor valor.
+
+n = int(input("Quantidade de valores: "))
+soma = 0
+contador = 0
+
+while (contador < n):
+    valor = float(input(f"Digite o {contador + 1}º valor: "))
+    soma += valor
+
+    if contador == 0:
+        maior = valor
+        menor = valor
+    else:
+        if valor > maior:
+            maior = valor
+        if valor < menor:
+            menor = valor
+    contador += 1
+
+media = soma / n
+
+print("*******************************************")
+print("Média =", media)
+print("Maior valor =", maior)
+print("Menor valor =", menor)

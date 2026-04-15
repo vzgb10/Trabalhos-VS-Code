@@ -1,0 +1,30 @@
+frase = input("Escreva sua frase: ")
+
+v = 0
+p = 0
+i = 0
+h = 0
+pos = 0
+
+while (pos < len(frase)):
+    if frase[pos] == ",":
+        v += 1
+    elif frase[pos] == ".":
+        p += 1
+    elif frase[pos] == "?":
+        i += 1
+    elif frase[pos] == "#":
+        h += 1
+    
+    pos += 1
+
+total = p + v + i + h
+
+if total > 0:
+    print("Total de ocorrências: ",total)
+    print("Ponto =",(p/total)*100,"%")
+    print("Vírgula =",(v/total)*100,"%")
+    print("Interrogação =",(i/total)*100,"%")
+    print("Hashtag =",(h/total)*100,"%")
+else:
+    print("Não foi encontrado nenhum símbolo escolhido")

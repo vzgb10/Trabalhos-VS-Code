@@ -1,0 +1,15 @@
+# CONVERTER IDADE EM MESES, DIAS E HORAS
+
+idade = int(input("Digite sua idade em anos: "))
+
+dias=idade*365
+
+meses=dias//30
+diasrestantes=dias%30
+
+horas=dias*24
+
+print("________________________________________________")
+
+print(f"Você viveu {meses} meses e {diasrestantes} dias")
+print(f"Equivalente a {horas} horas")

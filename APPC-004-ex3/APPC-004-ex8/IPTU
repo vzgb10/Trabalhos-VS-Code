@@ -1,0 +1,15 @@
+# CALCULAR DESCONTO DO IPTU
+
+construcao = int(input("Digite o ano de contrução do imóvel: "))
+atual = int(input("Digite o ano atual: "))
+
+idade=atual-construcao
+
+if idade<5:
+    print("O desconto será de 0%")
+elif idade>=5 and idade<20:
+    print("O desconto será de 15%")
+elif idade>=20 and idade<40:
+    print("O desconto será de 25%")
+else:
+    print("O desconto será de 30%")

@@ -1,0 +1,6 @@
+# III) CONVERTER CENTÍMETROS PARA MILÍMETROS
+
+centimetros = float(input("Valor em centímetros: "))
+milimetros=centimetros*10
+
+print(f"O valor em milímetros é: {milimetros} mm")

@@ -1,0 +1,13 @@
+# CALCULAR VALOR DA FUNÇÃO
+
+try:
+    x = float(input("Digite o valor de [x]: "))
+
+    fx=(4+x**2-3*x+9)/x
+    print("O valor da função é:",fx)
+
+except ValueError: 
+    print("ERRO. São aceitos somentes valores numéricos.")
+
+except ZeroDivisionError:
+    print("ERRO. Não é aceito divisão por zero")

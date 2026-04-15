@@ -1,0 +1,14 @@
+#1 Desenvolva um algoritmo e efetue a implementação em Python para ler n valores e imprimir o valor médio.
+
+n = int(input("Digite a quantidade de valores: "))
+soma = 0
+contador = 0
+
+while contador < n:
+    valor = float(input(f"Digite o {contador + 1}º valor: "))
+    soma += valor
+    contador += 1
+media = soma / n
+
+print("*******************************************")
+print("A média dos valores é:", media)

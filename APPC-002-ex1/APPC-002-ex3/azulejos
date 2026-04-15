@@ -1,0 +1,18 @@
+# CALCULAR AZULEJOS NECESSÁRIOS
+
+largura = float(input("Digite a largura do local em metros: "))
+comprimento = float(input("Digite o comprimento do local em metros:"))
+
+la = float(input("Digite a largura do azulejo em metros: "))
+ca = float(input("Digite o comprimento do azulejo em metros: "))
+
+al=largura*comprimento          # al = area do local
+aaz=la*ca                       # aaz = area do azulejo
+
+quantidade=al/aaz
+
+print("____________________________________________________")
+
+print(f"Quantidade mínima de azulejos necessários: {al:0.0f}")
+
+print("____________________________________________________")

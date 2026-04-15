@@ -1,0 +1,18 @@
+# CONVERTER PARA ºC
+
+fahrenheit = float(input("Digite a temperatura em Fahrenheit: "))
+kelvin = float(input("Digite a temperatura em Kelvin: "))
+rankine = float(input("Digite a temperatura em Rankine: "))
+reaumur = float(input("Digite a temperatura em Réaumur: "))
+
+cf=(fahrenheit-32)*5/9
+ck=kelvin-273.15
+cra=(rankine-491.67)*5/9
+cre=reaumur*1.25
+
+print("******************************************************")
+print("Fahrenheit em Celsius:", cf)
+print("Kelvin em Celsius:", ck)
+print("Rankine em Celsius:", cra)
+print("Réaumur em Celsius", cre)
+print("******************************************************")

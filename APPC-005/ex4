@@ -1,0 +1,14 @@
+#1 Desenvolva um algoritmo e efetue a implementação em Python para
+#  calcular a fatorial de um número n, onde a fatorial é definida por: n! = n*(n-1)*(n-2) * ... *1
+
+n = int(input("Digite um número: "))
+
+fatorial = 1
+contador = 1
+
+while contador <= n:
+    fatorial = fatorial * contador
+    contador = contador + 1
+
+print("****************************************")
+print("Fatorial =", fatorial)

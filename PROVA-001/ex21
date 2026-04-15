@@ -1,0 +1,53 @@
+somaidade = 0
+idademin = 1000
+idademax = -1000
+mediaidade = 0
+mediapeso = 0
+somapeso = 0
+pesomin = 1000
+pesomax = -1000
+somaex = 0
+ncad = 0
+op = "s"
+while (op=="s"):
+    try:
+        idade = int(input("Sua idade: "))
+        peso = float(input("Seu peso (kg): "))
+        ex = ""
+        while (ex!=n)and(ex!=s):
+            ex = input("Você faz exercícios regularmente? ")
+            if (ex!="s") and (ex!="n"):
+                print("Por favor digitar somente 's' ou 'n'.")
+        somaidade += idade
+        somapeso += peso
+        if (ex=="s"):
+            somaex += 1
+        if (idade>idademax):
+            idademax = idade
+        if (idade<idademin):
+            idademin = idade
+        if(peso>pesomax):
+            pesomax = peso
+        if (peso<pesomin):
+            pesomin = peso
+        ncad += 1
+    
+        mediaidade = somaidade / ncad
+        mediapeso = somapeso / ncad
+        pexs = somaex / ncad *100
+        pexn = (ncad - somaex) / ncad *100
+
+    except:
+        print("Digite somente valores númericos")
+    
+    while(op!="s")and(op!="n"):
+            op = input("Digite outro cadastro 's' ou 'n'")
+
+    print("Idade Média: ",mediaidade)
+    print("Idade Mínima: ",idademin)
+    print("Idade Máxima: ",idademax)
+    print("Peso Médio: ",mediapeso)
+    print("Peso Mínimo: ",pesomin)
+    print("Peso Máximo: ",pesomax)
+    print("Percentual Exercícios: ",pexs)
+    print("Percentual Não Exercícios ",pexn)

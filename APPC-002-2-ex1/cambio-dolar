@@ -1,0 +1,18 @@
+# CALCULAR CONVERSÃO EM DÓLAR
+
+cotacao = float(input("Digite a cotação do Rapid em relação ao Dólar: "))
+volume = float(input("Digite o volume do Dólar a ser comprado: "))
+
+conversao=cotacao*volume
+
+acrescimo=conversao+10
+
+taxa=acrescimo*1.02
+
+total=taxa*1.006            # 1.006 = imposto de renda
+
+print("___________________________________________________________")
+
+print(f"O valor total a ser gasto em Rapid é de: RP${total:0.2f}")
+
+print("___________________________________________________________")

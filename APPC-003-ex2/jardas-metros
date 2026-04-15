@@ -1,0 +1,6 @@
+# XVII) CONVERTER JARDAS PARA METROS
+
+jardas = float(input(" Valor em jardas: "))
+metros=jardas/1.094
+
+print(f"O valor em metros é: {metros:0.2f} m")

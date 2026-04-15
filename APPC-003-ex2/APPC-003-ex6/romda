@@ -1,0 +1,22 @@
+# PREÇO DE VENDA DA ROMDA
+
+cmp = float(input("Custo da matéria Prima: "))
+cmo = float(input("Custo da Mão de Obra: "))
+ce = float(input("Custo da Energia: "))
+cf = float(input("Custos Fixos: "))
+
+ct=cmp+cmo+ce+cf
+
+ir=ct*0.275
+iof=ct*0.035
+
+pv=ct+ir+iof
+
+print("___________________________________________________")
+
+print(f"Custo Total: R${ct:0.2f}")
+print(f"Imposto de Renda: R${ir:0.2f}")
+print(f"IOF: R${iof:0.2f}")
+print(f"Preço de Venda: R${pv:0.2f}")
+
+print("___________________________________________________")

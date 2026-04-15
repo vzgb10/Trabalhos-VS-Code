@@ -1,0 +1,6 @@
+# XV) CONVERTER METROS PARA LÉGUAS
+
+metros = float(input("Valor em metros: "))
+leguas=metros/4828
+
+print(f"O valor em léguas é: {leguas:0.3f}")

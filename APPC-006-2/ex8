@@ -1,0 +1,42 @@
+pacientes = []
+
+quant = int(input("QUANTOS PACIENTES VOCÊ QUER CADASTRAR? "))
+print("*" *50)
+for x in range(1, quant+1):
+    nome     = input("NOME DO PACIENTE:        ").upper()
+    print("---------------------------------------")
+    sintoma1 = input("PRIMEIRO SINTOMA:        ").upper()
+    print("---------------------------------------")
+    sintoma2 = input("SEGUNDO SINTOMA:         ").upper()
+    print("---------------------------------------")
+    sintoma3 = input("TERCEIRO SINTOMA:        ").upper()
+    print("---------------------------------------")
+    idade    = input("IDADE DO PACIENTE:       ")
+
+    paciente = [x, nome, sintoma1, sintoma2, sintoma3, idade]
+    pacientes.append(paciente)
+
+for x, aux in enumerate(pacientes):
+    x        = aux[0]
+    nome     = aux[1]
+    sintoma1 = aux[2]
+    sintoma2 = aux[3]
+    sintoma3 = aux[4]
+    idade    = aux[5]
+
+    print(f"\n  PACIENTE {x}")
+    print(f"NOME:      {nome}      ")
+    print(f"SINTOMA 1: {sintoma1}  ")
+    print(f"SINTOMA 2: {sintoma2}  ")
+    print(f"SINTOMA 3: {sintoma3}  ")
+    print(f"IDADE:     {idade} anos")
+    print("-" * 45)
+
+soma_idades = 0
+for aux in pacientes:
+    soma_idades += aux[1]
+ 
+media = soma_idades / quant
+
+print("*" *50)
+print(f"IDADE MÉDIA: {media:.1}")

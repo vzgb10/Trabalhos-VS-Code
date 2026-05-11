@@ -1,0 +1,39 @@
+produtos = []
+
+n = int(input("QUANTOS PRODUTOS ALIMENTÍCIOS VOCÊ GOSTARIA DE CADASTRAR?  "))
+
+for x in range(1, n+1):
+    nome     = input("NOME DO PRODUTO: ").upper()
+    print("-"*50)
+    quant    = float(input("QUANTIDADE (g): "))
+    print("-"*50)
+    calorias = input("NÚMERO DE CALORIAS POR GRAMA: ")
+    print("="*50)
+
+    produto = [x, nome, quant, calorias]
+    produtos.append(produto)
+
+for x, aux in enumerate(produtos):
+    x        = aux[0]
+    nome     = aux[1]
+    quant    = aux[2]
+    calorias = aux[3]
+    print(f"\n===PRODUTO {x}===")
+    print(f"NOME:       {nome}")
+    print(f"QUANTIDADE: {quant}")
+    print(f"CALORIAS:   {calorias}")
+
+print("*"*50)
+print("===CALORIAS CONSUMIDAS===")
+
+for aux in produtos:
+    nome     = aux[1]
+    quant    = aux[2]
+    calorias = aux[3]
+    total = calorias * quant
+    print("\n" + "=" * 50)
+    print(f"PRODUTO:             {produtos}")
+    print(f"QUANTIDADE:          {quant}")
+    print(f"CALORIAS:            {calorias}")
+    print(f"CALORIAS CONSUMIDAS: {total}")
+    print("="*50)

@@ -1,0 +1,62 @@
+candidatos = [
+    [10, "EDUARDO LARSON"],
+    [20, "CLÉBER OLIVEIRA"],
+    [30, "ANA CASTELA"],
+    [40, "ANTÔNIO MACHADO"],
+    [00, "NULO"],
+]
+
+votos = [0, 0, 0, 0, 0]
+total_votos = 0
+
+while True:
+    print("-" * 50)
+    print("  Digite o NÚMERO do candidato para votar.")
+    print("  Digite 'FIM' para encerrar a votação.")
+    print("-" * 50)
+ 
+    for x in candidatos:
+        print(f"  [{x[0]:02d}]  {x[1]}")
+ 
+    print("-" * 50)
+    entrada = input("SEU VOTO: ").upper()
+ 
+    if entrada == "FIM":
+        senha = input("  SENHA DE ENCERRAMENTO: ").strip()
+        if senha == "2070":
+            print("\nVotação encerrada com sucesso!")
+            break
+        else:
+            print("Senha incorreta. Votação continua.")
+            continue
+
+    voto_valido = False
+    for i, x in enumerate(candidatos):
+        if entrada == str(x[0]):
+            votos[i] += 1
+            total_votos += 1
+            print(f"\nVoto computado para {x[1]}!")
+            voto_valido = True
+ 
+    if not voto_valido:
+        print("Número inválido. Tente novamente.")
+
+print("=====RESULTADO DA ELEIÇÃO — RAPIDÓPOLIS 2070=====")
+
+maior_votos  = 0
+vencedor = 0
+ 
+for i, x in enumerate(candidatos):
+    numero   = x[0]
+    nome     = x[1]
+    quant    = votos[i]
+    if total_votos > 0:
+        percentual = (quant / total_votos) * 100
+    else:
+        percentual = 0
+ 
+    print(f"  {numero} {nome} {quant} {percentual:.2f}%")
+ 
+    if i < 4 and quant > maior_votos:
+        maior_votos = quant
+        vencedor = i

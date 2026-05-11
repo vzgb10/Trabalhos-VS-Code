@@ -1,0 +1,129 @@
+contatos = []
+ 
+while True:
+ 
+    print("═"*50)
+    print("       AGENDA DE CONTATOS          ")
+    print("-"*50)
+    print("  [1]  Cadastrar contato           ")
+    print("  [2]  Consultar por nome          ")
+    print("  [3]  Consultar por apelido       ")
+    print("  [4]  Deletar contato             ")
+    print("  [5]  Listar todos (A-Z)          ")
+    print("  [0]  Sair                        ")
+    print("═"*50)
+ 
+    opcao = input("ESCOLHA UMA OPÇÃO: ")
+
+    if opcao == 1:
+        print("═"*50)
+        print("  NOVO CONTATO")
+        print("-"*50)
+        nome       = input("NOME:        ").strip().upper()
+        apelido    = input("APELIDO      ").strip().upper()
+        celular    = input("CELULAR:     ").strip()
+        email      = input("EMAIL:       ").strip().lower()
+        endereco   = input("ENDEREÇO:    ").strip().upper()
+        nascimento = input("NASCIMENTO:  ").strip()
+
+        contato = [nome, apelido, celular, email, endereco, nascimento]
+        contatos.append(contato)
+        print(f"\nContato '{nome}' cadastrado com sucesso!")
+        print("═"*50)
+    
+    elif opcao == 2:
+        print("═"*50)
+        print("  CONSULTAR NOME")
+        print("-"*50)
+        busca = input("DIGITE O NOME:  ").strip().upper()
+        encontrados = 0
+        for aux in contatos:
+            if busca in aux[0]:
+                print("─"*38)
+                print(f"  NOME:        {aux[0]}")
+                print(f"  APELIDO:     {aux[1]}")
+                print(f"  CELULAR:     {aux[2]}")
+                print(f"  EMAIL:       {aux[3]}")
+                print(f"  ENDEREÇO:    {aux[4]}")
+                print(f"  NASCIMENTO:  {aux[5]}")
+                print("─"*38)
+                encontrados += 1
+        if encontrados == 0:
+            print(f"\n  Nenhum contato encontrado com o nome '{busca}'")
+        else:
+            print(f"\n  {encontrados} contato(s) encontrado(s)!")
+        print("═"*50)
+
+    elif opcao == 3:
+        print("═"*50)
+        print("  CONSULTAR APELIDO")
+        print("-"*50)
+        busca = input("DIGITE O APELIDO:  ").strip().upper()
+        encontrados = 0
+        for aux in contatos:
+            if busca in aux[1]:
+                print("─"*38)
+                print(f"  NOME:        {aux[0]}")
+                print(f"  APELIDO:     {aux[1]}")
+                print(f"  CELULAR:     {aux[2]}")
+                print(f"  EMAIL:       {aux[3]}")
+                print(f"  ENDEREÇO:    {aux[4]}")
+                print(f"  NASCIMENTO:  {aux[5]}")
+                print("─"*38)
+                encontrados += 1
+        if encontrados == 0:
+            print(f"\n  Nenhum contato encontrado com o apelido '{busca}'")
+        else:
+            print(f"\n  {encontrados} contato(s) encontrado(s)!")
+        print("═"*50)
+
+    elif opcao == 4:
+        print("═"*50)
+        print("  DELETAR CONTATO")
+        print("-"*50)
+        busca = input("  NOME DO CONTATO QUE DESEJA DELETAR: ").strip().upper()
+
+        encontrados = 0
+        for aux in contatos:
+            if aux[0] == busca:
+                encontrados += 1
+        if encontrados == 0:
+            print(f"\n  Contato '{busca}' não encontrado.")
+        else:
+            confirma = input(f"  Confirma deleção de '{busca}'? (S/N): ").strip().upper()
+            if confirma == "S":
+                i = 0
+                while i < len(contatos):
+                    if contatos[i][0] == busca:
+                        contatos.pop(i)
+                    else:
+                        i += 1
+                print(f"\n  Contato '{busca}' deletado com sucesso!")
+            else:
+                print("  Deleção cancelada.")
+        print("═"*50)
+
+    elif opcao == 5:
+        print("═"*50)
+        print("  LISTAGEM DE CONTATOS (A/Z)")
+        print("-"*50)
+        contatos.sort(key=lambda c: c[0])
+
+        for x, aux in enumerate(contatos):
+            print(f"  CONTATO {x}")
+            print("-"*50)
+            print(f"  NOME:        {aux[0]}")
+            print(f"  APELIDO:     {aux[1]}")
+            print(f"  CELULAR:     {aux[2]}")
+            print(f"  EMAIL:       {aux[3]}")
+            print(f"  ENDEREÇO:    {aux[4]}")
+            print(f"  NASCIMENTO:  {aux[5]}")
+            print("-"*50)
+
+    elif opcao == 6:
+        print("═"*50)
+        print("SAINDO DO PROGRAMA...")
+        break
+    
+    else:
+        print("OPÇÃO INVÁLIDA. TENTE NOVAMENTE.")

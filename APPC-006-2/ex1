@@ -1,0 +1,30 @@
+veiculos = []
+
+quant = int(input("QUANTOS CARROS VOCÊ GOSTARIA DE CADASTRAR?  "))
+
+for x in range(1, quant+1):
+    print(f"\n---VEÍCULO {x}---")
+    nome=input("NOME:       ").upper()
+    marca=input("MARCA:     ").upper()
+    cor=input("COR:         ").upper()
+    ano=input("ANO:         ")
+    placa=input("PLACA:     ").upper()
+
+    veiculo = [x, nome, marca, cor, ano, placa]
+
+    veiculos.append(veiculo)
+
+for x, aux in enumerate(veiculos):
+    aux=veiculos[x]
+    print("\n",x,"\t",aux)
+    nome=aux[0]
+    marca=aux[1]
+    cor=aux[2]
+    ano=aux[3]
+    placa=aux[4]
+    print(f"\n===VEICULO {x+1}===")
+    print("NOME DO CARRO:     ",nome)
+    print("MARCA:             ",marca)
+    print("COR DO CARRO:      ",cor)
+    print("ANO:               ",ano)
+    print("PLACA:             ",placa)

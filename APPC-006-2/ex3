@@ -1,0 +1,38 @@
+veiculos = []
+
+quant = int(input("QUANTOS CARROS VOCÊ GOSTARIA DE CADASTRAR?  "))
+
+for x in range(1, quant + 1):
+    print(f"\n--- VEÍCULO {x} ---")
+    tipo     = input("TIPO  (eletrico/flex/diesel/hidrogenio): ").upper()
+    modelo   = input("MODELO:    ").upper()
+    cor      = input("COR:       ").upper()
+    potencia = input("POTÊNCIA:  ")
+ 
+    veiculo = [tipo, modelo, cor, potencia]
+    veiculos.append(veiculo)
+
+veiculos.sort(key=lambda v: v[1])
+
+cor_busca = input("  CONSULTA — Digite a cor desejada: ").upper()
+
+encontrados=0
+for x, aux in enumerate(veiculos):
+    tipo     = aux[0]
+    modelo   = aux[1]
+    cor      = aux[2]
+    potencia = aux[3]
+    print(f"\n===VEICULO {x+1}===")
+    print("TIPO:       ",tipo)
+    print("MODELO:     ",modelo)
+    print("COR:        ",cor)
+    print("POTENCIA:   ",potencia)
+
+    if cor == cor_busca:
+        print(f"{x} {tipo} {modelo} {cor} {potencia}")
+        encontrados += 1
+
+if encontrados == 0:
+    print(f"  Nenhum veículo encontrado com a cor '{cor_busca}'.")
+
+print(f"  Total encontrado: {encontrados} veículo(s).")

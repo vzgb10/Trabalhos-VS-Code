@@ -1,0 +1,19 @@
+#imprima a lista no terminal
+
+dados = [
+         ["800games", 1.71, 105 ],
+         ["hyzzaaquy", 1.30, 94 ],
+         ["adamazthor", 1.50, 99],
+         ["syr", 1.80, 60       ]
+
+]
+
+pos = 0
+tam = len(dados)
+
+while(pos<tam):
+    nome = dados[pos][0]
+    altura = dados[pos][1]
+    peso = dados[pos][2]
+    print(pos,"\t", nome,"\t", altura,"\t", peso,"\t")
+    pos+=1

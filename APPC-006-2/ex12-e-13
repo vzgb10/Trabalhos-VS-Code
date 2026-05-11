@@ -1,0 +1,44 @@
+produtos = []
+
+n = int(input("QUANTOS PRODUTOS ALIMENTÍCIOS VOCÊ GOSTARIA DE CADASTRAR?  "))
+
+for x in range(1, n+1):
+    nome     = input("NOME DO PRODUTO: ").upper()
+    print("-"*50)
+    calorias = input("NÚMERO DE CALORIAS POR GRAMA: ")
+    print("="*50)
+
+    produto = [x, nome, calorias]
+    produtos.append(produto)
+
+for x, aux in enumerate(produtos):
+    x        = aux[0]
+    nome     = aux[1]
+    calorias = aux[2]
+    print(f"\n===PRODUTO {x}===")
+    print(f"NOME:     {nome}")
+    print(f"CALORIAS: {calorias}")
+
+print("*"*50)
+print("===CALORIAS CONSUMIDAS===")
+
+nome_busca = input("NOME DO PRODUTO:  ").upper()
+print("-"*50)
+quant      = float(input("QUANTIDADE (g): "))
+
+encontrado = False
+for aux in produtos:
+    nome     = aux[1]
+    calorias = aux[2]
+    if nome == nome_busca:
+        total = calorias * quant
+        print("\n" + "=" * 50)
+        print(f"PRODUTO:             {produtos}")
+        print(f"CALORIAS:            {calorias}")
+        print(f"QUANTIDADE:          {quant}")
+        print(f"CALORIAS CONSUMIDAS: {total}")
+        encontrado = True
+        print("="*50)
+
+if not encontrado:
+    print(f"\n  Produto '{nome_busca}' não encontrado no cadastro.")

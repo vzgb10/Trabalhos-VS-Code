@@ -1,0 +1,19 @@
+pacientes = []
+
+quant = int(input("QUANTOS PACIENTES VOCÊ QUER CADASTRAR? "))
+print("*" *50)
+for x in range(1, quant+1):
+    nome     = input("NOME DO PACIENTE:        ").upper()
+    print("---------------------------------------")
+    sintoma1 = input("PRIMEIRO SINTOMA:        ").upper()
+    print("---------------------------------------")
+    sintoma2 = input("SEGUNDO SINTOMA:         ").upper()
+    print("---------------------------------------")
+    sintoma3 = input("TERCEIRO SINTOMA:        ").upper()
+    print("---------------------------------------")
+    idade    = input("IDADE DO PACIENTE:       ")
+
+    paciente = [x, nome, sintoma1, sintoma2, sintoma3, idade]
+    pacientes.append(paciente)
+
+print(f"\n {pacientes}")

@@ -1,0 +1,33 @@
+# FORMATO: NIVEL | PALAVRA | DICA | LETRAS_VISIVEIS
+# Niveis: FACIL, MEDIO, DIFICIL
+
+FACIL|GOL|Quando a bola entra na rede do adversário|1
+FACIL|BOLA|Objeto esférico usado no futebol|1
+FACIL|TIME|Conjunto de jogadores que disputam juntos|1
+FACIL|JUIZ|Árbitro que apita as faltas|1
+FACIL|FALTA|Infração cometida por um jogador|1
+FACIL|REDE|Onde a bola deve entrar para marcar|1
+FACIL|CAMPO|Local onde o jogo acontece|1
+FACIL|CHUTE|Movimento de chutar a bola|1
+FACIL|PASSE|Quando um jogador envia a bola ao companheiro|1
+FACIL|MEIA|Posição de jogador no meio-campo|1
+MEDIO|ZAGUEIRO|Jogador defensivo que protege a área|2
+MEDIO|ATACANTE|Jogador especializado em marcar gols|2
+MEDIO|GOLEIRO|Único jogador que pode pegar a bola com as mãos|2
+MEDIO|DRIBLAR|Passar pelo adversário com a bola|2
+MEDIO|ESCANTEIO|Cobrança quando a bola sai pela linha de fundo|2
+MEDIO|PÊNALTI|Cobrança especial dentro da grande área|2
+MEDIO|LATERAL|Cobrança quando a bola sai pela linha lateral|2
+MEDIO|BANDEIRA|Objeto que o assistente usa para sinalizar|2
+MEDIO|TORCIDA|Conjunto de fãs que torcem pelo time|2
+MEDIO|CAMPEÃO|Quem vence o torneio ao final|2
+DIFICIL|IMPEDIMENTO|Quando o atacante está à frente da defesa na hora do passe|3
+DIFICIL|TREINADOR|Profissional responsável por dirigir a equipe|3
+DIFICIL|CAMPEONATO|Competição disputada entre vários times|3
+DIFICIL|ARTILHEIRO|Jogador que mais gols marcou na competição|3
+DIFICIL|ESCALAÇÃO|Lista dos jogadores escolhidos para a partida|3
+DIFICIL|ADVERSÁRIO|Time ou jogador contra quem se joga|3
+DIFICIL|EXPULSÃO|Quando o jogador recebe cartão vermelho e sai do campo|3
+DIFICIL|CLASSIFICADO|Time que avança para a próxima fase|3
+DIFICIL|PRORROGA|Período extra de jogo quando há empate|3
+DIFICIL|TABELINHA|Troca rápida de passes entre dois jogadores|3

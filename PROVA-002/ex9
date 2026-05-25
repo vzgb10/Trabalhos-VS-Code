@@ -1,0 +1,195 @@
+pacientes = []
+ 
+opcao = -1
+while opcao != 0:
+ 
+    print("\n--- SOFTWARE CITHOR ---")
+    print("1 - CADASTRAR")
+    print("2 - CONSULTAR (POR NOME)")
+    print("3 - LISTAR")
+    print("4 - ALTERAR")
+    print("5 - DELETAR")
+    print("6 - ARMAZENAR DADOS EM ARQUIVO")
+    print("7 - LER DADOS DO ARQUIVO")
+    print("0 - SAIR")
+ 
+    try:
+        opcao = int(input("QUAL A SUA OPCAO ? : "))
+    except:
+        print("Opcao invalida!")
+        opcao = -1
+        continue
+
+    if opcao == 1:
+        try:
+            nome        = input("Nome: ").strip().upper()
+            sexo        = input("Sexo [M/F]: ").strip().upper()
+            idade       = int(input("Idade: "))
+            antecedente = input("Antecedente de cancer [S/N]: ").strip().upper()
+
+            print("Tipo de cancer:")
+            print("0 - NAO SE APLICA")
+            print("1 - PELE")
+            print("2 - PROSTATA")
+            print("3 - MAMA")
+            print("4 - INTESTINO")
+            print("5 - OUTRO")
+            entrada = input("Digite os numeros (ex: 1 3 ou somente 0): ").strip()
+
+            tipos = []
+            opcoes_tipo = entrada.split()
+            for op in opcoes_tipo:
+                if op == "0":
+                    tipos = ["NAO SE APLICA"]
+                    break
+                elif op == "1" and "PELE"      not in tipos:
+                    tipos.append("PELE")
+                elif op == "2" and "PROSTATA"  not in tipos:
+                    tipos.append("PROSTATA")
+                elif op == "3" and "MAMA"      not in tipos:
+                    tipos.append("MAMA")
+                elif op == "4" and "INTESTINO" not in tipos:
+                    tipos.append("INTESTINO")
+                elif op == "5" and "OUTRO"     not in tipos:
+                    tipos.append("OUTRO")
+            if len(tipos) == 0:
+                tipos = ["NAO SE APLICA"]
+
+            tratamento  = input("Realiza tratamento especifico [S/N]: ").strip().upper()
+            diagnostico = input("Possui diagnostico de cancer [S/N]: ").strip().upper()
+
+            pacientes.append([nome, sexo, idade, antecedente, tipos, tratamento, diagnostico])
+            print("Paciente cadastrado!")
+        except:
+            print("Erro no cadastro!")
+
+    if opcao == 2:
+        if len(pacientes) == 0:
+            print("Nenhum paciente cadastrado.")
+        else:
+            busca = input("Nome para buscar: ").strip().upper()
+            encontrou = False
+            for p in pacientes:
+                if busca in p[0].upper():
+                    print("\nNome:      " + p[0])
+                    print("Sexo:        " + p[1])
+                    print("Idade:       " + str(p[2]))
+                    print("Antecedente: " + p[3])
+                    print("Tipos:       " + ", ".join(p[4]))
+                    print("Tratamento:  " + p[5])
+                    print("Diagnostico: " + p[6])
+                    encontrou = True
+            if not encontrou:
+                print("Nenhum paciente encontrado.")
+
+    if opcao == 3:
+        if len(pacientes) == 0:
+            print("Nenhum paciente cadastrado.")
+        else:
+            for i in range(len(pacientes)):
+                p = pacientes[i]
+                print(str(i+1) + ": " + p[0] + " / " + p[1] + " / " + str(p[2]) + " anos / " + ", ".join(p[4]))
+
+    if opcao == 4:
+        if len(pacientes) == 0:
+            print("Nenhum paciente cadastrado.")
+        else:
+            for i in range(len(pacientes)):
+                print(str(i+1) + ". " + pacientes[i][0])
+            try:
+                num = int(input("Numero do paciente: ")) - 1
+                if num < 0 or num >= len(pacientes):
+                    print("Numero invalido!")
+                else:
+                    p = pacientes[num]
+                    print("ENTER para manter o valor atual.")
+ 
+                    novo = input("Nome [" + p[0] + "]: ").strip()
+                    if novo != "":
+                        p[0] = novo
+ 
+                    novo = input("Sexo M/F [" + p[1] + "]: ").strip().upper()
+                    if novo in ["M", "F"]:
+                        p[1] = novo
+ 
+                    novo = input("Idade [" + str(p[2]) + "]: ").strip()
+                    if novo != "":
+                        try:
+                            p[2] = int(novo)
+                        except:
+                            print("Idade invalida, mantida a anterior.")
+ 
+                    novo = input("Antecedente S/N [" + p[3] + "]: ").strip().upper()
+                    if novo in ["S", "N"]:
+                        p[3] = novo
+ 
+                    novo = input("Tratamento S/N [" + p[5] + "]: ").strip().upper()
+                    if novo in ["S", "N"]:
+                        p[5] = novo
+ 
+                    novo = input("Diagnostico S/N [" + p[6] + "]: ").strip().upper()
+                    if novo in ["S", "N"]:
+                        p[6] = novo
+ 
+                    pacientes[num] = p
+                    print("Paciente alterado!")
+            except:
+                print("Erro ao alterar.")
+    
+    if opcao == 5:
+        if len(pacientes) == 0:
+            print("Nenhum paciente cadastrado.")
+        else:
+            for i in range(len(pacientes)):
+                print(str(i+1) + ". " + pacientes[i][0])
+            try:
+                num = int(input("Numero do paciente: ")) - 1
+                if num < 0 or num >= len(pacientes):
+                    print("Numero invalido!")
+                else:
+                    conf = input("Confirma exclusao de " + pacientes[num][0] + "? [S/N]: ").strip().upper()
+                    if conf == "S":
+                        pacientes.pop(num)
+                        print("Paciente removido!")
+                    else:
+                        print("Cancelado.")
+            except:
+                print("Erro ao deletar.")
+    
+    elif opcao == 6:
+        try:
+            arq = open("cithor_pacientes.txt", "w")
+            for p in pacientes:
+                linha = p[0] + "/" + p[1] + "/" + str(p[2]) + "/" + p[3] + "/" + ";".join(p[4]) + "/" + p[5] + "/" + p[6] + "\n"
+                arq.write(linha)
+            arq.close()
+            print(str(len(pacientes)) + " paciente(s) salvos em cithor_pacientes.txt")
+        except:
+            print("Erro ao salvar!")
+
+    elif opcao == 7:
+        try:
+            arq    = open("cithor_pacientes.txt", "r")
+            linhas = arq.readlines()
+            arq.close()
+            pacientes = []
+            for linha in linhas:
+                linha = linha.strip()
+                if linha == "":
+                    continue
+                try:
+                    pos   = linha.split("|")
+                    tipos = pos[4].split(";")
+                    pacientes.append([pos[0], pos[1], int(pos[2]), pos[3], tipos, pos[5], pos[6]])
+                except:
+                    print("Linha com problema: " + linha)
+            print(str(len(pacientes)) + " paciente(s) carregados.")
+        except:
+            print("Arquivo cithor_pacientes.txt nao encontrado.")
+
+    elif opcao == 0:
+        print("Encerrando CITHOR.")
+        break
+
+    else:
+        print("Opcao invalida!")

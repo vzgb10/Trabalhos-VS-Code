@@ -1,0 +1,7 @@
+arquivo = open('EXEMPLOTXTSEEK001.txt', 'r')
+arquivo.seek(3 * 5, 0)
+caracteres = arquivo.read(5)
+print("CARACTERES LIDOS: ", caracteres)
+valor = int(caracteres)
+print("VALOR: ", valor)
+arquivo.close()

@@ -1,0 +1,12 @@
+arquivo = open("ARQUIVO001.TXT", "r")
+ 
+numero_linha = 0
+ 
+for linha in arquivo:
+    numero_linha += 1
+    print("Linha " + str(numero_linha) + ": " + linha.strip())
+ 
+arquivo.close()
+ 
+print("\nTotal de linhas lidas: " + str(numero_linha))
+print("Leitura concluída.")

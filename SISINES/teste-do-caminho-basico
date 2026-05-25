@@ -1,0 +1,87 @@
+import unittest
+
+inadimplentes = ["JOÃO", "LUCAS", "GUILHERME"]
+
+# exercício 3
+# FUNÇÃO DOS TESTES
+def verificar(idade, renda, nome, escolaridade):
+
+    if idade < 18:
+        return False
+
+    if renda < 2000:
+        return False
+
+    if nome in inadimplentes:
+        return False
+    # exercício 4
+    if escolaridade.lower() != "superior":
+        return False
+
+    return True
+
+# exercício 1
+# PROGRAMA PRINCIPAL
+nome         = input("Digite seu nome: ").upper()
+idade        = int(input("Digite sua idade: "))
+renda        = int(input("Digite sua renda mensal: "))
+escolaridade = input("Digite sua escolaridade: ").upper()
+print("="*50)
+
+print(f"NOME: {nome}")
+print(f"IDADE: {idade}")
+print(f"RENDA: R${renda}")
+print(f"ESCOLARIDADE: {escolaridade}")
+
+print("="*50)
+
+elegivel = True
+
+if (idade<18):
+    print("Inelegível! Idade menor que 18 anos.")
+    elegivel = False
+
+if (renda<2000):
+    print("Inelegível! Renda menor que R$2000.")
+    elegivel = False
+
+if nome in inadimplentes:
+    print("Inelegível! Nome na lista de inadimplentes.")
+    elegivel = False
+
+if (escolaridade.lower() != "SUPERIOR"):
+    print("Inelegível! Escolaridade não é 'Superior'.")
+    elegivel = False
+
+if elegivel:
+    print("Pessoa elegível para empréstimo")
+
+# exercício 5
+# TESTES
+class TesteEmprestimo(unittest.TestCase):
+
+    def test_caminho_1(self):
+        self.assertEqual(
+            verificar(25, 3000, "Carlos", "superior"), True)
+
+    def test_caminho_2(self):
+        self.assertEqual(
+            verificar(17, 3000, "Carlos", "superior"), False)
+
+    def test_caminho_3(self):
+        self.assertEqual(
+            verificar(25, 1500, "Carlos", "superior"), False)
+
+    def test_caminho_4(self):
+        self.assertEqual(
+            verificar(25, 3000, "João", "superior"), False)
+
+    def test_caminho_5(self):
+        self.assertEqual(
+            verificar(25, 3000, "Carlos", "medio"), False)
+
+    def test_caminho_6(self):
+        self.assertEqual(
+            verificar(16, 1000, "Maria", "medio"), False)
+    
+# 'unittest.main()' para rodar...

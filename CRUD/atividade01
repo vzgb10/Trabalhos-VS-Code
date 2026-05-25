@@ -8,7 +8,11 @@
 #3 - listar
 #4 - alterar
 #5 - deletar
+#6 - gravar dados arquivo
+#7 - ler dados arquivo
 #0 - sair
+
+ARQUIVO = "agenda.json"
 
 dados = [ 
     ["ADAMASTHOR", "M", "19 912345678", "adm@gmail.com", 18],
@@ -110,16 +114,16 @@ while True:
         encontrado = False
 
         for contato in dados:
-        if contato[0] == busca:
-        print(f"Dados atuais: {contato}")
-        contato[0] = input("Novo Nome: ").upper()
-        contato[1] = input("Novo Sexo: ").upper()
-        contato[2] = input("Novo Celular: ")
-        contato[3] = input("Novo Email: ")
-        contato[4] = input("Nova Idade: ")             
-        print("DADOS ATUALIZADOS COM SUCESSO!")
-        encontrado = True
-        break
+            if contato[0] == busca:
+                print(f"Dados atuais: {contato}")
+                contato[0] = input("Novo Nome: ").upper()
+                contato[1] = input("Novo Sexo: ").upper()
+                contato[2] = input("Novo Celular: ")
+                contato[3] = input("Novo Email: ")
+                contato[4] = input("Nova Idade: ")             
+                print("DADOS ATUALIZADOS COM SUCESSO!")
+                encontrado = True
+                break
 
     elif escolha == 5:
         print("\n--- DELETAR CONTATO ---")
@@ -132,6 +136,75 @@ while True:
                 encontrado = True
                 break
     
+    elif escolha == 6:
+        print("\n--- GRAVAR DADOS ARQUIVO ---")
+        texto = "[\n"
+        pos = 0
+        tam = len(dados)
+        while pos < tam:
+            contato = dados[pos]
+            texto += "  [\n"
+            texto += f'"{contato[0]}",\n'
+            texto += f'"{contato[1]}",\n'
+            texto += f'"{contato[2]}",\n'
+            texto += f'"{contato[3]}",\n'
+            texto += f'"{contato[4]}"\n'
+            if pos < tam - 1:
+                texto += "  ],\n"
+            else:
+                texto += "  ]\n"
+            pos += 1
+
+        texto += "]"
+        arquivo = open(ARQUIVO, "w", encoding="utf-8")
+        arquivo.write(texto)
+        arquivo.close()
+        print(f"DADOS GRAVADOS COM SUCESSO EM '{ARQUIVO}'.")
+
+    elif escolha == 7:
+        print("\n--- LER DADOS ARQUIVO ---")
+        try:
+            arquivo = open(ARQUIVO, "r", encoding="utf-8")
+            conteudo = arquivo.read()
+            arquivo.close()
+            dados = []
+            profundidade = 0
+            inicio = 0
+            i = 0
+
+            while i < len(conteudo):
+                c = conteudo[i]
+                if c == "[":
+                    profundidade += 1
+                    if profundidade == 2:
+                        inicio = i
+                elif c == "]":
+                    if profundidade == 2:
+                        bloco = conteudo[inicio+1:i]
+                        valores = []
+                        j = 0
+                        while j < len(bloco):
+                            if bloco[j] == '"':
+                                fim_aspas = bloco.index('"', j + 1)
+                                valores.append(bloco[j+1:fim_aspas])
+                                j = fim_aspas + 1
+                            else:
+                                j += 1
+                        if len(valores) == 5:
+                            try:
+                                valores[4] = int(valores[4])
+                            except:
+                                pass
+                            dados.append(valores)
+                    profundidade -= 1
+                i += 1
+ 
+            print(f"DADOS CARREGADOS COM SUCESSO DE '{ARQUIVO}'.")
+            print(f"TOTAL DE CONTATOS CARREGADOS: {len(dados)}")
+        except FileNotFoundError:
+            print(f"ARQUIVO '{ARQUIVO}' NAO ENCONTRADO.")
+            print("GRAVE OS DADOS PRIMEIRO...")
+
     elif escolha == 0:
         print("Desligando o Sistema...")
         break

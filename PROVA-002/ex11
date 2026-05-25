@@ -1,0 +1,46 @@
+dados = []
+ 
+continuar = "S"
+while continuar.upper() == "S":
+ 
+    print("\n--- Novo entrevistado ---")
+ 
+    try:
+        nome = input("Nome: ").strip()
+        idade = int(input("Idade: "))
+        nota = float(input("Nota qualidade de vida (0 a 10): "))
+        if nota < 0 or nota > 10:
+            print("Nota deve ser entre 0 e 10!")
+ 
+        dados.append([nome, idade, nota])
+        print("Registrado!")
+ 
+    except:
+        print("Erro inesperado.")
+        
+    continuar = input("Cadastrar outro? [S/N]: ").strip().upper()
+
+arq = open("DADOS.TXT", "w")
+for d in dados:
+    arq.write(d[0] + "," + str(d[1]) + "," + str(d[2]) + "\n")
+arq.close()
+print("Dados salvos em DADOS.TXT")
+
+if len(dados) > 0:
+    total      = len(dados)
+    soma_idade = 0
+    nota_alta  = 0
+    nota_baixa = 0
+ 
+    for d in dados:
+        soma_idade += d[1]
+        if d[2] >= 8:
+            nota_alta += 1
+        else:
+            nota_baixa += 1
+ 
+    print("\n--- RESULTADOS ---")
+    print("Total:        " + str(total))
+    print("Idade media:  " + str(round(soma_idade/total, 1)) + " anos")
+    print("Nota >= 8:    " + str(nota_alta)  + " (" + str(round(nota_alta/total*100,  1)) + "%)")
+    print("Nota  < 8:    " + str(nota_baixa) + " (" + str(round(nota_baixa/total*100, 1)) + "%)")

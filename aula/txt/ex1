@@ -1,0 +1,58 @@
+continuar = True
+while continuar:
+    print("\n----- MENU -----")
+    print("1 - Cadastrar novo contato")
+    print("2 - Listar todos os contatos")
+    print("3 - Sair")
+    opcao = input("Escolha uma opção: ").strip()
+
+    if opcao == "1":
+        arq = open("arquivo.txt","w")
+        print("\n--- NOVO CONTATO ---")
+        nome        = input("Nome completo  : ").strip().upper()
+        telefone    = input("Telefone       : ").strip()
+        nascimento  = input("Data nascimento: ").strip()
+        email       = input("E-mail         : ").strip()
+
+        linha = (nome + "," + telefone + "," + nascimento + "," + email + "\n")
+        arq.write(linha)
+        arq.close()
+
+        print("Contato '" + nome + "' salvo com sucesso!")
+
+    elif opcao == "2":
+        print("\n--- LISTA DE CONTATOS ---")
+        try:
+            arq = open("arquivo.txt","w")
+            linhas  = arq.readlines()
+            arq.close()
+        except FileNotFoundError:
+            linhas = []
+ 
+        if len(linhas) == 0:
+            print("Nenhum contato cadastrado ainda.")
+        else:
+            contador = 0
+            for linha in linhas:
+                linha = linha.strip()
+                if linha == "":
+                    continue
+                partes     = linha.split(";")
+                nome       = partes[0] if len(partes) > 0 else "—"
+                telefone   = partes[1] if len(partes) > 1 else "—"
+                nascimento = partes[2] if len(partes) > 2 else "—"
+                email      = partes[3] if len(partes) > 3 else "—"
+                contador  += 1
+                print("\n  [" + str(contador) + "]")
+                print("  Nome      : " + nome)
+                print("  Telefone  : " + telefone)
+                print("  Nascimento: " + nascimento)
+                print("  E-mail    : " + email)
+            print("\n  Total de contatos: " + str(contador))
+
+    elif opcao == "3":
+        print("\nSaindo da Agenda.")
+        continuar = False
+ 
+    else:
+        print("Opção inválida. Tente novamente.")

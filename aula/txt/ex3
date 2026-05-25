@@ -1,0 +1,39 @@
+carros = []
+ 
+arq = open("carros.txt", "r", encoding="utf-8")
+ 
+for linha in arq:
+    linha = linha.strip()
+    pos = linha.split(";")
+
+    if len(pos) == 5:
+        marca  = pos[0].strip()
+        modelo = pos[1].strip()
+        ano    = pos[2].strip()
+        cor    = pos[3].strip()
+        placa  = pos[4].strip()
+
+        carro = [marca, modelo, ano, cor, placa]
+        carros.append(carro)
+    else:
+        print("Formato inválido...")
+
+arq.close()
+
+print("\nTotal de veículos lidos: " + str(len(carros)))
+
+x = 0
+while x < len(carros):
+    i      = carros[x]
+    numero = str(x + 1)
+    marca  = i[0]
+    modelo = i[1]
+    ano    = i[2]
+    cor    = i[3]
+    placa  = i[4]
+    print(numero + " | " + marca + " | " + modelo + " | " + ano + " | " + cor + " | " + placa)
+    x += 1
+
+print("\n--- ESTRUTURA COMPLETA (carros) ---")
+for i in carros:
+    print(i)

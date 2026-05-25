@@ -16,8 +16,9 @@ import datetime
 # ─────────────────────────────────────────────
 #  CONFIGURAÇÃO DE ARQUIVOS
 # ─────────────────────────────────────────────
-ARQUIVO_PALAVRAS = "palavras.txt"
-ARQUIVO_PLACAR   = "placar.txt"
+import os
+ARQUIVO_PALAVRAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "palavras.txt")
+ARQUIVO_PLACAR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "placar.txt")
 
 # ─────────────────────────────────────────────
 #  CONFIGURAÇÕES DE JOGO
@@ -399,10 +400,6 @@ def main():
         else:
             print("  Opção inválida! Tente novamente.")
             pausar()
-
-
-# ─────────────────────────────────────────────
-#  PONTO DE ENTRADA
-# ─────────────────────────────────────────────
+            
 if __name__ == "__main__":
     main()

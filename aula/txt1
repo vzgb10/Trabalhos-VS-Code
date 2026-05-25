@@ -1,0 +1,49 @@
+vac_m = 0
+vac_f = 0
+nvac_m = 0
+nvac_f = 0
+covid_m = 0
+covid_f = 0
+soma_dose = 0
+
+dados = []
+
+arq = open("arquivo.txt","r")
+
+for linha in arq:
+    pos = linha.strip().split("|")
+    vac = pos[4].upper()
+    sexo = pos[1].upper()
+    covid = pos[3].upper()
+    dose1 = int(pos[5])
+    dose2 = int(pos[6])
+    dose3 = int(pos[7])
+    soma_dose = dose1 + dose2 + dose3
+
+    if sexo == "M":
+        if vac == "S":
+            vac_m += 1
+        else:
+            nvac_m += 1
+        if covid == "S":
+            covid_m += 1
+        else:
+            nvac_f += 1
+
+    if sexo == "F":
+        if vac == "S":
+            vac_f += 1
+        if covid == "S":
+            covid_f += 1
+        
+media = soma_dose / linha
+
+print("Vacinados Masculino: ",vac_m)
+print("Não Vacinados Maculino: ",nvac_m)
+print("Vacinados Feminino: ",vac_f)
+print("Não Vacinados Feminino: ",nvac_f)
+print("="*50)
+print("Homens com COVID: ",covid_m)
+print("Mulheres com COVID: ",covid_f)
+print("="*50)
+print("Média de Aplicações: ",media)

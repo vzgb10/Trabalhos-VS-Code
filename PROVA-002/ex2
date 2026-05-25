@@ -1,0 +1,68 @@
+entrevistados = []
+
+continuar = "S"
+while continuar.upper() == "S":
+
+    conhece = ""
+    while conhece not in ["S", "N"]:
+        try:
+            conhece = input("Você conhece os produtos da IRMAO? [S/N]: ").strip().upper()
+        except:
+            print("Entrada inválida!")
+
+    utiliza = ""
+    while utiliza not in ["S", "N"]:
+        try:
+            utiliza = input("Você utiliza os produtos da IRMAO? [S/N]: ").strip().upper()
+        except:
+            print("Entrada inválida!")
+        
+    print("Quais produtos você utiliza?")
+    print("1 - TERRAS RARAS")
+    print("2 - ACOS ESPECIAIS")
+    print("3 - TITANIO")
+    print("0 - NAO UTILIZO")
+    entrada = input("Digite as opções (ex: 1 2 ou somente 0): ").strip()
+
+    produtos = []
+    opcoes = entrada.split()
+    for op in opcoes:
+        if op == "0":
+            produtos = ["NAO UTILIZO"]
+            break
+        elif op == "1" and "TERRAS RARAS" not in produtos:
+            produtos.append("TERRAS RARAS")
+        elif op == "2" and "ACOS ESPECIAIS" not in produtos:
+            produtos.append("ACOS ESPECIAIS")
+        elif op == "3" and "TITANIO" not in produtos:
+            produtos.append("TITANIO")
+        
+    entrevistados.append([conhece, utiliza, produtos])
+
+    continuar = ""
+    while continuar not in ["S", "N"]:
+        try:
+            continuar = input("Cadastrar outro? [S/N]: ").strip().upper()
+        except:
+            print("Entrada inválida!")
+
+arq = open("pesquisa.txt","w")
+
+for en in entrevistados:
+    linha = en[0] + "/" + en[1] + "/" + ",".join(en[2]) + "\n"
+    arq.write(linha)
+arq.close()
+print("Dados salvos em 'pesquisa.txt'!")
+
+arq = open("pesquisa.csv", "w")
+arq.write("CONHECE,UTILIZA,TERRAS_RARAS,ACOS_ESPECIAIS,TITANIO,NAO_UTILIZO\n")
+
+for en in entrevistados:
+    tr = "S" if "TERRAS RARAS"   in en[2] else "N"
+    ac = "S" if "ACOS ESPECIAIS" in en[2] else "N"
+    ti = "S" if "TITANIO"        in en[2] else "N"
+    nu = "S" if "NAO UTILIZO"    in en[2] else "N"
+    arq.write(en[0] + "," + en[1] + "," + tr + "," + ac + "," + ti + "," + nu + "\n")
+
+arq.close()
+print("Dados salvos em pesquisa_irmao.csv")

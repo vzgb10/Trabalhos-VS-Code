@@ -1,0 +1,70 @@
+total         = 0
+soma_idade    = 0
+maior_idade   = -1000
+menor_idade   = 1000
+soma_peso     = 0.0
+maior_peso    = -1000
+menor_peso    = 1000
+exercicio_sim = 0
+exercicio_nao = 0
+
+arq = open("DADOS.TXT", "r")
+linhas = arq.readlines()
+arq.close()
+
+i = 0
+while i < len(linhas):
+    linha_idade = linhas[i].strip()
+    i += 1
+    if i >= len(linhas):
+        break
+    linha_peso = linhas[i].strip()
+    i += 1
+    if i >= len(linhas):
+        break
+    linha_exerc = linhas[i].strip().upper()
+    i += 1
+
+    if linha_idade == "" or linha_peso == "" or linha_exerc == "":
+        continue
+
+    idade = int(linha_idade)
+    peso  = float(linha_peso)
+
+    total      += 1
+    soma_idade += idade
+    soma_peso  += peso
+
+    if idade > maior_idade:
+        maior_idade = idade
+    if idade < menor_idade:
+        menor_idade = idade
+
+    if peso > maior_peso:
+        maior_peso = peso
+    if peso < menor_peso:
+        menor_peso = peso
+
+    if linha_exerc == "S":
+        exercicio_sim += 1
+    else:
+        exercicio_nao += 1
+
+if total > 0:
+    print("Total de entrevistados: " + str(total))
+ 
+    print("\n--- IDADE ---")
+    print("Media:  " + str(round(soma_idade/total, 1)))
+    print("Maxima: " + str(maior_idade))
+    print("Minima: " + str(menor_idade))
+ 
+    print("\n--- PESO ---")
+    print("Medio:  " + str(round(soma_peso/total, 2)))
+    print("Maximo: " + str(maior_peso))
+    print("Minimo: " + str(menor_peso))
+ 
+    print("\n--- EXERCICIOS ---")
+    print("Fazem:     " + str(exercicio_sim) + " (" + str(round(exercicio_sim/total*100, 1)) + "%)")
+    print("Nao fazem: " + str(exercicio_nao) + " (" + str(round(exercicio_nao/total*100, 1)) + "%)")
+else:
+    print("Nenhum dado processado.")

@@ -1,0 +1,64 @@
+total          = 0
+conhece_sim    = 0
+conhece_nao    = 0
+utiliza_sim    = 0
+utiliza_nao    = 0
+tr   = 0
+ac   = 0
+ti   = 0
+nu   = 0
+
+try:
+    arq = open("pesquisa.txt","r")
+    linhas = arq.readlines()
+    arq.close()
+
+    for linha in linhas:
+        linha = linha.strip()
+        if linha == "":
+            continue
+    pos = linha.split("/")
+    conhece = pos[0]
+    utiliza  = pos[1]
+    produtos = pos[2].split(",")
+    total += 1
+
+    if conhece == "S":
+        conhece_sim += 1
+    else:
+        conhece_nao += 1
+    if utiliza == "S":
+        utiliza_sim += 1
+    else:
+        utiliza_nao += 1
+
+    for p in produtos:
+        if p == "TERRAS RARAS":
+            tr += 1
+        elif p == "ACOS ESPECIAIS":
+            ac += 1
+        elif p == "TITANIO":
+            ti += 1
+        elif p == "NAO UTILIZO":
+            nu += 1
+except:
+    print("Erro ao abrir pesquisa.txt")
+
+if total > 0:
+    print("Total de entrevistados: " + str(total))
+
+    print("\n Conhecimento dos produtos:")
+    print("   Conhecem:     " + str(conhece_sim) + " (" + str(round(conhece_sim/total*100, 1)) + "%)")
+    print("   Nao conhecem: " + str(conhece_nao) + " (" + str(round(conhece_nao/total*100, 1)) + "%)")
+ 
+    print("\n Utilizacao dos produtos:")
+    print("   Utilizam:     " + str(utiliza_sim) + " (" + str(round(utiliza_sim/total*100, 1)) + "%)")
+    print("   Nao utilizam: " + str(utiliza_nao) + " (" + str(round(utiliza_nao/total*100, 1)) + "%)")
+ 
+    print("\n Produtos utilizados:")
+    print("   Terras Raras:   " + str(tr) + " (" + str(round(tr/total*100, 1)) + "%)")
+    print("   Acos Especiais: " + str(ac) + " (" + str(round(ac/total*100, 1)) + "%)")
+    print("   Titanio:        " + str(ti) + " (" + str(round(ti/total*100, 1)) + "%)")
+    print("   Nao utilizo:    " + str(nu) + " (" + str(round(nu/total*100, 1)) + "%)")
+else:
+    print("Nenhum dado encontrado.")

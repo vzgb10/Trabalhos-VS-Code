@@ -1,0 +1,18 @@
+dados = []
+
+arq = open("rifa.txt","w")
+
+opcao = "S"
+while opcao != "N":
+    nome  = input("Nome: ").strip().upper()
+    idade = int(input("Idade: "))
+    sexo  = input("Sexo [M/F]: ").strip().upper()
+    freq  = int(input("Quantas vezes você frequênta o RIFA por semana: "))
+
+    linha = (nome + "," + idade + "," + sexo + "," + freq + "\n")
+
+    arq.write(linha)
+
+    opcao = input("Deseja realizar outro cadastro? [S/N]").upper()
+
+arq.close()

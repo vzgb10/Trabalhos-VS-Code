@@ -1,0 +1,160 @@
+pacientes = []
+ 
+try:
+    arq = open("cithor_pacientes.txt", "r")
+    linhas = arq.readlines()
+    arq.close()
+    for linha in linhas:
+        linha = linha.strip()
+        if linha == "":
+            continue
+        try:
+            campos = linha.split("|")
+            tipos = campos[4].split(";")
+            pacientes.append([campos[0], campos[1], int(campos[2]), campos[3], tipos, campos[5], campos[6]])
+        except:
+            print("Linha com problema: " + linha)
+    print(str(len(pacientes)) + " paciente(s) carregados.")
+except:
+    print("Arquivo cithor_pacientes.txt nao encontrado.")
+    print("Execute a Questao 9 primeiro!")
+ 
+if len(pacientes) == 0:
+    print("Nenhum dado para analisar.")
+else:
+    total = len(pacientes)
+    print("\n=== ESTATISTICAS CITHOR ===")
+    print("Total de pacientes: " + str(total))
+
+    masc = 0
+    fem  = 0
+    for p in pacientes:
+        if p[1] == "M":
+            masc += 1
+        else:
+            fem += 1
+    print("\n Por sexo:")
+    print("   Masculino: " + str(masc) + " (" + str(round(masc/total*100, 1)) + "%)")
+    print("   Feminino:  " + str(fem)  + " (" + str(round(fem/total*100,  1)) + "%)")
+
+    soma   = 0
+    minima = pacientes[0][2]
+    maxima = pacientes[0][2]
+    for p in pacientes:
+        soma += p[2]
+        if p[2] < minima:
+            minima = p[2]
+        if p[2] > maxima:
+            maxima = p[2]
+    print("\n Idades:")
+    print("   Media:  " + str(round(soma/total, 1)))
+    print("   Minima: " + str(minima))
+    print("   Maxima: " + str(maxima))
+
+    ant_s = 0
+    ant_n = 0
+    for p in pacientes:
+        if p[3] == "S":
+            ant_s += 1
+        else:
+            ant_n += 1
+    print("\n Antecedente de cancer:")
+    print("   Sim: " + str(ant_s) + " (" + str(round(ant_s/total*100, 1)) + "%)")
+    print("   Nao: " + str(ant_n) + " (" + str(round(ant_n/total*100, 1)) + "%)")
+
+    pele       = 0
+    prostata   = 0
+    mama       = 0
+    intestino  = 0
+    outro      = 0
+    nao_aplica = 0
+    for p in pacientes:
+        for t in p[4]:
+            if t == "PELE":
+                pele += 1
+            elif t == "PROSTATA":
+                prostata += 1
+            elif t == "MAMA":
+                mama += 1
+            elif t == "INTESTINO":
+                intestino += 1
+            elif t == "OUTRO":
+                outro += 1
+            elif t == "NAO SE APLICA":
+                nao_aplica += 1
+    print("\n Tipo de cancer:")
+    print("   Nao se aplica: " + str(nao_aplica) + " (" + str(round(nao_aplica/total*100, 1)) + "%)")
+    print("   Pele:          " + str(pele)       + " (" + str(round(pele/total*100,       1)) + "%)")
+    print("   Prostata:      " + str(prostata)   + " (" + str(round(prostata/total*100,   1)) + "%)")
+    print("   Mama:          " + str(mama)       + " (" + str(round(mama/total*100,       1)) + "%)")
+    print("   Intestino:     " + str(intestino)  + " (" + str(round(intestino/total*100,  1)) + "%)")
+    print("   Outro:         " + str(outro)      + " (" + str(round(outro/total*100,      1)) + "%)")
+
+    trat_s = 0
+    trat_n = 0
+    for p in pacientes:
+        if p[5] == "S":
+            trat_s += 1
+        else:
+            trat_n += 1
+    print("\n Realiza tratamento:")
+    print("   Sim: " + str(trat_s) + " (" + str(round(trat_s/total*100, 1)) + "%)")
+    print("   Nao: " + str(trat_n) + " (" + str(round(trat_n/total*100, 1)) + "%)")
+
+    diag_s = 0
+    diag_n = 0
+    for p in pacientes:
+        if p[6] == "S":
+            diag_s += 1
+        else:
+            diag_n += 1
+    print("\n Diagnostico de cancer:")
+    print("   Sim: " + str(diag_s) + " (" + str(round(diag_s/total*100, 1)) + "%)")
+    print("   Nao: " + str(diag_n) + " (" + str(round(diag_n/total*100, 1)) + "%)")
+
+    masc_a = 0
+    fem_a  = 0
+    for p in pacientes:
+        if p[1] == "M" and p[3] == "S":
+            masc_a += 1
+        elif p[1] == "F" and p[3] == "S":
+            fem_a += 1
+    print("\n Sexo + antecedente de cancer:")
+    print("   Masculino: " + str(masc_a) + " (" + str(round(masc_a/total*100, 1)) + "%)")
+    print("   Feminino:  " + str(fem_a)  + " (" + str(round(fem_a/total*100,  1)) + "%)")
+
+    masc_d = 0
+    fem_d  = 0
+    for p in pacientes:
+        if p[1] == "M" and p[6] == "S":
+            masc_d += 1
+        elif p[1] == "F" and p[6] == "S":
+            fem_d += 1
+    print("\n Sexo + diagnostico de cancer:")
+    print("   Masculino: " + str(masc_d) + " (" + str(round(masc_d/total*100, 1)) + "%)")
+    print("   Feminino:  " + str(fem_d)  + " (" + str(round(fem_d/total*100,  1)) + "%)")
+
+    arq_m = open("cithor_homens.txt",   "w")
+    arq_f = open("cithor_mulheres.txt", "w")
+    for p in pacientes:
+        linha = p[0] + "/" + p[1] + "/" + str(p[2]) + "/" + p[3] + "/" + ";".join(p[4]) + "/" + p[5] + "/" + p[6] + "\n"
+        if p[1] == "M":
+            arq_m.write(linha)
+        else:
+            arq_f.write(linha)
+    arq_m.close()
+    arq_f.close()
+    print("\n Arquivos gerados: cithor_homens.txt e cithor_mulheres.txt")
+
+    nomes_tipos = ["NAO SE APLICA", "PELE", "PROSTATA", "MAMA", "INTESTINO", "OUTRO"]
+    nomes_arqs  = ["cithor_nao_aplica.txt", "cithor_pele.txt", "cithor_prostata.txt",
+                    "cithor_mama.txt", "cithor_intestino.txt", "cithor_outro.txt"]
+    print("\n Arquivos por tipo de cancer:")
+    for k in range(len(nomes_tipos)):
+        arq_t = open(nomes_arqs[k], "w")
+        for p in pacientes:
+            if nomes_tipos[k] in p[4]:
+                linha = p[0] + "/" + p[1] + "/" + str(p[2]) + "/" + p[3] + "/" + ";".join(p[4]) + "/" + p[5] + "/" + p[6] + "\n"
+                arq_t.write(linha)
+        arq_t.close()
+        print(nomes_arqs[k])

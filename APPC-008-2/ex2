@@ -1,0 +1,4 @@
+arquivo = open('EXEMPLOTXTSEEK001.txt', 'r+')
+arquivo.seek(3*5,0)
+caracteres= arquivo.write((format(123,"05d")))
+arquivo.close()

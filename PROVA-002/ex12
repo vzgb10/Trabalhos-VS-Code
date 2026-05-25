@@ -1,0 +1,45 @@
+selecionados = []
+ 
+arq = open("CADASTRO.TXT", "r")
+linhas = arq.readlines()
+arq.close()
+
+primeira = True
+for linha in linhas:
+    linha = linha.strip()
+    if linha == "":
+        continue
+    if primeira:
+        primeira = False
+        continue
+
+    campos  = linha.split(",")
+    id_c    = campos[0].strip()
+    nome    = campos[1].strip()
+    idade   = int(campos[2].strip())
+    altura  = float(campos[3].strip())
+    peso    = float(campos[4].strip())
+    sexo    = campos[5].strip()
+    estado  = campos[6].strip()
+    filhos  = campos[7].strip()
+    escol   = campos[8].strip().upper()
+
+    if 20 <= idade <= 30 and 1.60 <= altura <= 1.80 and 60 <= peso <= 80 and escol == "SP":
+        selecionados.append([id_c, nome, idade, altura, peso, sexo, estado, filhos, escol])
+    
+print("Total selecionados: " + str(len(selecionados)))
+
+if len(selecionados) > 0:
+    print("\nCandidatos aprovados:")
+    for s in selecionados:
+        print(s[0] + " / " + s[1] + " / " + str(s[2]) + " anos / " + str(s[3]) + "m / " + str(s[4]) + "kg / " + s[8])
+
+    arq = open("SELECIONADOS.TXT", "w")
+    arq.write("ID,NOME,IDADE,ALTURA,PESO,SEXO,ESTADOCIVIL,NUMEROFILHOS,ESCOLARIDADE\n")
+    for s in selecionados:
+        arq.write(s[0] + "," + s[1] + "," + str(s[2]) + "," + str(s[3]) + "," + str(s[4]) + "," + s[5] + "," + s[6] + "," + s[7] + "," + s[8] + "\n")
+    arq.close()
+    print("Selecionados salvos em 'SELECIONADOS.TXT'")
+
+else:
+    print("Nenhum candidato foi selecionado.")

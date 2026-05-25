@@ -4,3 +4,8 @@
 13/05/2026 23:14 | Jogador: vitor           | Nível: DIFICIL  | Palavra: PRORROGA             | Pontos:   +54 | Tentativas: 4/4 | DERROTA
 13/05/2026 23:15 | Jogador: vitor           | Nível: DIFICIL  | Palavra: ADVERSÁRIO           | Pontos:  +200 | Tentativas: 1/4 | VITÓRIA
 13/05/2026 23:15 | Jogador: vitor           | Nível: MEDIO    | Palavra: CAMPEÃO              | Pontos:  +140 | Tentativas: 4/6 | VITÓRIA
+15/05/2026 15:15 | Jogador: C:\Users\User\AppData\Local\Python\pythoncore-3.14-64\python.exe c:/Users/User/Trabalhos-VS-Code/JOGO-DA-FORCA/forca-de-futebol.py | Nível: FACIL    | Palavra: CHUTE                | Pontos:   +60 | Tentativas: 1/8 | VITÓRIA
+15/05/2026 23:02 | Jogador: valeria         | Nível: FACIL    | Palavra: JUIZ                 | Pontos:   +60 | Tentativas: 1/8 | VITÓRIA
+15/05/2026 23:04 | Jogador: valeria         | Nível: MEDIO    | Palavra: BANDEIRA             | Pontos:   +95 | Tentativas: 6/6 | DERROTA
+15/05/2026 23:04 | Jogador: valeria         | Nível: MEDIO    | Palavra: ZAGUEIRO             | Pontos:  +120 | Tentativas: 1/6 | VITÓRIA
+15/05/2026 23:05 | Jogador: valeria         | Nível: DIFICIL  | Palavra: ADVERSÁRIO           | Pontos:  +200 | Tentativas: 1/4 | VITÓRIA

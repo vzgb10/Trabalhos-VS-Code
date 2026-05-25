@@ -1,0 +1,49 @@
+viagens = []
+ 
+
+arq = open("viagens.csv", "r")
+linhas = arq.readlines()
+arq.close()
+
+primeira = True
+for linha in linhas:
+    linha = linha.strip()
+    if linha == "":
+        continue
+    if primeira:
+        primeira = False
+        continue
+
+    pos    = linha.split(",")
+    inicio    = pos[0].strip()
+    destino   = pos[1].strip()
+    volume    = float(pos[2].strip())
+    distancia = float(pos[3].strip())
+
+    if distancia == 0:
+        print("Distancia zero em " + inicio + " -> " + destino + ", ignorada.")
+        continue
+
+    consumo = volume / distancia
+    viagens.append([inicio, destino, volume, distancia, consumo])
+
+if len(viagens) > 0:
+    print("Total de viagens: " + str(len(viagens)) + "\n")
+ 
+    for i in range(len(viagens)):
+        v = viagens[i]
+        print(str(i+1) + ": " + v[0] + " -> " + v[1])
+        print("   Volume: " + str(v[2]) + " |  Distancia: " + str(v[3]) + " Km  |  Consumo: " + str(round(v[4], 4)) + " L/Km")
+
+    idx_maior = 0
+    idx_menor = 0
+    for i in range(len(viagens)):
+        if viagens[i][4] > viagens[idx_maior][4]:
+            idx_maior = i
+        if viagens[i][4] < viagens[idx_menor][4]:
+            idx_menor = i
+    
+    print("Maior consumo: " + viagens[idx_maior][0] + " -> " + viagens[idx_maior][1] + " (" + str(round(viagens[idx_maior][4], 4)) + " L/Km)")
+    print("Menor consumo: " + viagens[idx_menor][0] + " -> " + viagens[idx_menor][1] + " (" + str(round(viagens[idx_menor][4], 4)) + " L/Km)")
+else:
+    print("Nenhuma viagem processada.")

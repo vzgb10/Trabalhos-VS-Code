@@ -1,0 +1,59 @@
+dados = []
+
+arq = open("rifa_pesquisa.txt", "r")
+linhas = arq.readlines()
+arq.close()
+
+for linha in linhas:
+    linha = linha.strip()
+    if linha == "":
+        continue
+    campos = linha.split(",")
+    dados.append([campos[0], int(campos[1]), campos[2].upper(), int(campos[3])])
+
+print(str(len(dados)) + " registro(s) carregados.")
+
+if len(dados) > 0:
+    total = len(dados)
+    homens   = 0
+    mulheres = 0
+    for d in dados:
+        if d[2] == "M":
+            homens += 1
+        else:
+            mulheres += 1
+    print("\nHomens:   " + str(homens))
+    print("Mulheres: " + str(mulheres))
+
+    soma_visitas = 0
+    min_visitas  = dados[0][3]
+    max_visitas  = dados[0][3]
+    soma_idades  = 0
+ 
+    for d in dados:
+        soma_visitas += d[3]
+        soma_idades  += d[1]
+        if d[3] < min_visitas:
+            min_visitas = d[3]
+        if d[3] > max_visitas:
+            max_visitas = d[3]
+
+    print("\nVisitas por semana:")
+    print("  Media:  " + str(round(soma_visitas/total, 2)))
+    print("  Minimo: " + str(min_visitas))
+    print("  Maximo: " + str(max_visitas))
+    print("\nIdade media: " + str(round(soma_idades/total, 1)) + " anos")
+
+    nome_longo = dados[0][0]
+    nome_curto = dados[0][0]
+ 
+    for d in dados:
+        if len(d[0]) > len(nome_longo):
+            nome_longo = d[0]
+        if len(d[0]) < len(nome_curto):
+            nome_curto = d[0]
+ 
+    print("\nNome mais longo: " + nome_longo)
+    print("Nome mais curto: " + nome_curto)
+else:
+    print("Nenhum dado para analisar.")

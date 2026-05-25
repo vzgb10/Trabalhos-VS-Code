@@ -1,0 +1,64 @@
+pessoas = []
+
+arq = open("BIOMETRICO.TXT", "r")
+linhas = arq.readlines()
+arq.close()
+
+i = 0
+while i < len(linhas):
+    linha_nome = linhas[i].strip()
+    i += 1
+    if i >= len(linhas):
+        break
+    linha_peso = linhas[i].strip()
+    i += 1
+    if i >= len(linhas):
+        break
+    linha_alt = linhas[i].strip()
+    i += 1
+    if linha_nome == "" or linha_peso == "" or linha_alt == "":
+        continue
+    nome   = linha_nome
+    peso   = float(linha_peso)
+    altura = float(linha_alt)
+    if altura == 0:
+        print(f"Sem altura para {nome}, ignorado.")
+        continue
+    imc = peso / (altura ** 2)
+    pessoas.append([nome, peso, altura, imc])
+
+if len(pessoas) > 0:
+    print(f"Total: {str(len(pessoas))} pessoas\n")
+ 
+    for p in pessoas:
+        print(p[0] + " / Peso: " + str(p[1]) + " / Altura: " + str(p[2]) + " / IMC: " + str(round(p[3], 2)))
+    maior_peso = pessoas[0]
+    menor_peso = pessoas[0]
+    maior_alt  = pessoas[0]
+    menor_alt  = pessoas[0]
+    maior_imc  = pessoas[0]
+    menor_imc  = pessoas[0]
+ 
+    for p in pessoas:
+        if p[1] > maior_peso[1]:
+            maior_peso = p
+        if p[1] < menor_peso[1]:
+            menor_peso = p
+        if p[2] > maior_alt[2]:
+            maior_alt = p
+        if p[2] < menor_alt[2]:
+            menor_alt = p
+        if p[3] > maior_imc[3]:
+            maior_imc = p
+        if p[3] < menor_imc[3]:
+            menor_imc = p
+ 
+    print("\n--- DESTAQUES ---")
+    print("Maior peso:   " + maior_peso[0] + " (" + str(maior_peso[1]) + " kg)")
+    print("Menor peso:   " + menor_peso[0] + " (" + str(menor_peso[1]) + " kg)")
+    print("Maior altura: " + maior_alt[0]  + " (" + str(maior_alt[2])  + " m)")
+    print("Menor altura: " + menor_alt[0]  + " (" + str(menor_alt[2])  + " m)")
+    print("Maior IMC:    " + maior_imc[0]  + " (" + str(round(maior_imc[3], 2)) + ")")
+    print("Menor IMC:    " + menor_imc[0]  + " (" + str(round(menor_imc[3], 2)) + ")")
+else:
+    print("Nenhum dado processado.")

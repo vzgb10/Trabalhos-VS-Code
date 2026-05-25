@@ -1,0 +1,62 @@
+total          = 0
+conhece_sim    = 0
+conhece_nao    = 0
+utiliza_sim    = 0
+utiliza_nao    = 0
+tr   = 0
+ac   = 0
+ti   = 0
+nu   = 0
+
+try:
+    arq = open("pesquisa.csv","r")
+    linhas = arq.readlines()
+    arq.close()
+
+    for linha in linhas:
+        linha = linha.strip()
+        if linha == "":
+            continue
+
+        campos = linha.split(",")
+        total += 1
+
+        if campos[0] == "S":
+            conhece_sim += 1
+        else:
+            conhece_nao += 1
+
+        if campos[1] == "S":
+            utiliza_sim += 1
+        else:
+            utiliza_nao += 1
+
+        if campos[2] == "S":
+            tr += 1
+        if campos[3] == "S":
+            ac += 1
+        if campos[4] == "S":
+            ti += 1
+        if campos[5] == "S":
+            nu += 1
+except:
+    print("Erro ao abrir pesquisa.csv")
+
+if total > 0:
+    print("Total de entrevistados: " + str(total))
+
+    print("\n Conhecimento dos produtos:")
+    print("   Conhecem:     " + str(conhece_sim) + " (" + str(round(conhece_sim/total*100, 1)) + "%)")
+    print("   Nao conhecem: " + str(conhece_nao) + " (" + str(round(conhece_nao/total*100, 1)) + "%)")
+ 
+    print("\n Utilizacao dos produtos:")
+    print("   Utilizam:     " + str(utiliza_sim) + " (" + str(round(utiliza_sim/total*100, 1)) + "%)")
+    print("   Nao utilizam: " + str(utiliza_nao) + " (" + str(round(utiliza_nao/total*100, 1)) + "%)")
+ 
+    print("\n Produtos utilizados:")
+    print("   Terras Raras:   " + str(tr) + " (" + str(round(tr/total*100, 1)) + "%)")
+    print("   Acos Especiais: " + str(ac) + " (" + str(round(ac/total*100, 1)) + "%)")
+    print("   Titanio:        " + str(ti) + " (" + str(round(ti/total*100, 1)) + "%)")
+    print("   Nao utilizo:    " + str(nu) + " (" + str(round(nu/total*100, 1)) + "%)")
+else:
+    print("Nenhum dado encontrado.")

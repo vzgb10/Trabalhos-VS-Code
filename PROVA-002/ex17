@@ -1,0 +1,76 @@
+pessoas = []
+
+arq = open("BIOMETRICO.TXT", "r")
+linhas = arq.readlines()
+arq.close()
+
+i = 0
+while i < len(linhas):
+    linha_nome = linhas[i].strip()
+    i += 1
+    if i >= len(linhas):
+        break
+    linha_peso = linhas[i].strip()
+    i += 1
+    if i >= len(linhas):
+        break
+    linha_alt = linhas[i].strip()
+    i += 1
+
+    if linha_nome == "" or linha_peso == "" or linha_alt == "":
+        continue
+    nome   = linha_nome
+    peso   = float(linha_peso)
+    altura = float(linha_alt)
+
+    if altura == 0:
+        continue
+    imc = peso / (altura * altura)
+    if imc < 18.5:
+        classif = "ABAIXO DO PESO"
+    elif imc <= 24.9:
+        classif = "PESO IDEAL"
+    elif imc <= 29.9:
+        classif = "SOBREPESO"
+    elif imc <= 34.8:
+        classif = "OBESO"
+    else:
+        classif = "OBESIDADE EXTREMA"
+    pessoas.append([nome, peso, altura, imc, classif])
+
+if len(pessoas) > 0:
+    print("Total: " + str(len(pessoas)) + " pessoas\n")
+
+    for p in pessoas:
+        print(p[0] + " / IMC: " + str(round(p[3], 2)) + " / " + p[4])
+
+    arq_ab = open("ABAIXOPESO.TXT",   "w")
+    arq_pi = open("PESOIDEAL.TXT",    "w")
+    arq_sp = open("SOBREPESO.TXT",    "w")
+    arq_ob = open("OBESO.TXT",        "w")
+    arq_oe = open("OBESOEXTREMO.TXT", "w")
+
+    for p in pessoas:
+        linha = p[0] + "/" + str(p[1]) + "/" + str(p[2]) + "/" + str(round(p[3], 2)) + "/" + p[4] + "\n"
+        if p[4] == "ABAIXO DO PESO":
+            arq_ab.write(linha)
+        elif p[4] == "PESO IDEAL":
+            arq_pi.write(linha)
+        elif p[4] == "SOBREPESO":
+            arq_sp.write(linha)
+        elif p[4] == "OBESO":
+            arq_ob.write(linha)
+        elif p[4] == "OBESIDADE EXTREMA":
+            arq_oe.write(linha)
+
+    arq_ab.close()
+    arq_pi.close()
+    arq_sp.close()
+    arq_ob.close()
+    arq_oe.close()
+    print("\nArquivos gerados:")
+    print("  ABAIXOPESO.TXT")
+    print("  PESOIDEAL.TXT")
+    print("  SOBREPESO.TXT")
+    print("  OBESO.TXT")
+    print("  OBESOEXTREMO.TXT")

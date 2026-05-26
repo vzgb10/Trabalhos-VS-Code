@@ -1,0 +1,38 @@
+maior_p = -1000
+nmaior_p = 0
+menor_p = 1000
+nmenor_p = 0
+maior_a = -1000
+nmaior_a = 0
+menor_a = 1000
+nmenor_a = 0
+
+def c_imc(peso, altura):
+    return peso / (altura ** 2)
+
+arq = open("BIOMETRICO.TXT","r")
+for linha in arq:    
+    pos    = linha.split()
+    nome   = pos[0]
+    peso   = float(pos[1])
+    altura = float(pos[2])
+    
+    imc = c_imc(peso, altura)
+
+    if peso>maior_p:
+        maior_p=peso
+    if peso<menor_p:
+        menor_p=peso
+
+    if altura>maior_a:
+        maior_a=altura
+    if altura<menor_a:
+        menor_a=altura
+
+arq.close()
+
+print("IMC: ",imc)
+print("PESSOA COM MAIOR PESO: ",maior_p)
+print("PESSOA COM MENOR PESO: ",menor_p)
+print("PESSOA COM MAIOR ALTURA: ",maior_a)
+print("PESSOA COM MENOR ALTURA: ",menor_a)

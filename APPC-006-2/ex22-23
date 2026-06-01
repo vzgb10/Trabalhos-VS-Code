@@ -1,0 +1,48 @@
+prods_nome   = []
+prods_unid   = []
+prods_precos = []
+prods_media  = []
+prods_max    = []
+prods_min    = []
+ 
+n = int(input("\nQuantos produtos serão pesquisados? "))
+ 
+for i in range(n):
+    print(f"\n--- Produto {i+1} ---")
+    prods_nome.append(input("  PRODUTO: ").upper())
+    prods_unid.append(input("  UNIDADE (ex: KG, 500g): ").upper())
+ 
+    precos = []
+    for k in range(1, 9):
+        preco = float(input(f"  VALOR {k}: R$ "))
+        precos.append(preco)
+ 
+    prods_precos.append(precos)
+    prods_media.append(sum(precos) / len(precos))
+    prods_max.append(max(precos))
+    prods_min.append(min(precos))
+ 
+print("\n--- RELATÓRIO DE PESQUISA DE PREÇOS ---")
+print(f"{'PRODUTO'} {'UNIDADE'} {'MÉDIA'} {'MÁXIMO'} {'MÍNIMO'}")
+print()
+for i in range(len(prods_nome)):
+    print(f"{prods_nome[i]:<12} {prods_unid[i]:<8} {prods_media[i]:>8.2f} {prods_max[i]:>8.2f} {prods_min[i]:>8.2f}")
+
+# exercício 23
+
+total        = len(prods_nome)
+soma_medias  = 0
+soma_maximos = 0
+soma_minimos = 0
+ 
+for i in range(total):
+    soma_medias  += prods_media[i]
+    soma_maximos += prods_max[i]
+    soma_minimos += prods_min[i]
+ 
+if total > 0:
+    print(f"\nPREÇO MÉDIO GERAL DE TODOS OS PRODUTOS: R$ {soma_medias / total:.2f}")
+    print(f"  MÉDIA DOS VALORES MÁXIMOS:              R$ {soma_maximos / total:.2f}")
+    print(f"  MÉDIA DOS VALORES MÍNIMOS:              R$ {soma_minimos / total:.2f}")
+else:
+    print("\nNenhum produto cadastrado para calcular estatísticas.")

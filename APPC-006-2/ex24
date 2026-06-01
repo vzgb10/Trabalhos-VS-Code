@@ -1,0 +1,40 @@
+unidades = ("", "UM", "DOIS", "TRÊS", "QUATRO", "CINCO",
+            "SEIS", "SETE", "OITO", "NOVE", "DEZ",
+            "ONZE", "DOZE", "TREZE", "QUATORZE", "QUINZE",
+            "DEZESSEIS", "DEZESSETE", "DEZOITO", "DEZENOVE")
+dezenas  = ("", "", "VINTE", "TRINTA", "QUARENTA", "CINQUENTA",
+            "SESSENTA", "SETENTA", "OITENTA", "NOVENTA")
+centenas = ("", "CENTO", "DUZENTOS", "TREZENTOS", "QUATROCENTOS",
+            "QUINHENTOS", "SEISCENTOS", "SETECENTOS", "OITOCENTOS", "NOVECENTOS")
+ 
+continuar = "S"
+while continuar.upper() == "S":
+    numero = int(input("\n  Digite um número inteiro entre 0 e 999: "))
+ 
+    if numero < 0 or numero > 999:
+        print("  Número fora do intervalo permitido (0 a 999)!")
+    elif numero == 0:
+        print("  Por extenso: ZERO")
+    elif numero == 100:
+        print("  Por extenso: CEM")
+    else:
+        extenso = ""
+        c     = numero // 100
+        resto = numero % 100
+        if c > 0:
+            extenso += centenas[c]
+        if resto > 0:
+            if extenso != "":
+                extenso += " E "
+            if resto < 20:
+                extenso += unidades[resto]
+            else:
+                d = resto // 10
+                u = resto % 10
+                extenso += dezenas[d]
+                if u > 0:
+                    extenso += " E " + unidades[u]
+        print(f"  Por extenso: {extenso}")
+    continuar = input("\n  Deseja converter outro número? (S/N): ")
+    
+print("\n  Encerrando BaRCo. Até logo!")

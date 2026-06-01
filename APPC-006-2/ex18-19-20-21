@@ -1,0 +1,144 @@
+dados = [] 
+
+n = int(input("\nQuantos colaboradores deseja cadastrar? "))
+ 
+for i in range(n):
+    print(f"\n--- Colaborador {i+1} ---")
+    nome     = input("NOME: ").upper()
+    veiculo  = input("VEÍCULO: ").upper()
+    placa    = input("PLACA: ").upper()
+    telefone = input("TELEFONE: ")
+    linha = [nome, veiculo, placa, telefone]
+    dados.append(linha)
+    
+print("\n--- LISTA DE COLABORADORES CADASTRADOS ---")
+for i in range(len(nome)):
+    print(f"\nNOME:      {nome[i]}")
+    print(f"  VEÍCULO:  {veiculo[i]}")
+    print(f"  PLACA:    {placa[i]}")
+    print(f"  TELEFONE: {telefone[i]}")
+
+# exercício 19
+
+busca = input("\nDigite o NOME do colaborador para consulta: ").upper()
+ 
+encontrado = False
+for i in range(len(nome)):
+    if nome[i] == busca:
+        print(f"\nColaborador encontrado:")
+        print(f"  NOME:      {nome[i]}")
+        print(f"  VEÍCULO:   {veiculo[i]}")
+        print(f"  PLACA:     {placa[i]}")
+        print(f"  TELEFONE:  {telefone[i]}")
+        encontrado = True
+        
+if not encontrado:
+    print(f"\nColaborador '{busca}' não encontrado no cadastro.")
+
+# exercício 20
+
+fone_busca = input("\nDigite o TELEFONE do colaborador para consulta: ")
+ 
+encontrado = False
+for i in range(len(telefone)):
+    if telefone[i] == fone_busca:
+        print(f"\nColaborador encontrado:")
+        print(f"  NOME:      {nome[i]}")
+        print(f"  VEÍCULO:   {veiculo[i]}")
+        print(f"  PLACA:     {placa[i]}")
+        print(f"  TELEFONE:  {telefone[i]}")
+        encontrado = True
+ 
+if not encontrado:
+    print(f"\nNenhum colaborador encontrado com o telefone '{fone_busca}'.")
+
+#exercício 21
+
+opcao = 0
+while opcao != 6:
+    print("\n==============================")
+    print("       KyFÓMY DELIVERY        ")
+    print("==============================")
+    print("  1) Cadastrar Colaborador")
+    print("  2) Consulta por Nome")
+    print("  3) Consulta por Telefone")
+    print("  4) Deletar Cadastro")
+    print("  5) Atualizar Cadastro")
+    print("  6) Sair")
+    print("==============================")
+    opcao = int(input("  Opção: "))
+
+    if opcao == 1:
+        nome     = input("\nNOME: ").upper()
+        veiculo  = input("  VEÍCULO: ").upper()
+        placa    = input("  PLACA: ").upper()
+        telefone = input("  TELEFONE: ")
+        linha = [nome, veiculo, placa, telefone]
+        dados.append(linha)
+        print(f"\n  Colaborador '{nome[-1]}' cadastrado com sucesso!")
+
+    elif opcao == 2:
+        busca = input("\n  Digite o NOME: ").upper()
+        encontrado = False
+        for i in range(len(nome)):
+            if nome[i] == busca:
+                print(f"\nNOME:      {nome[i]}")
+                print(f"  VEÍCULO:   {veiculo[i]}")
+                print(f"  PLACA:     {placa[i]}")
+                print(f"  TELEFONE:  {telefone[i]}")
+                encontrado = True
+        if not encontrado:
+            print(f"\n  Colaborador '{busca}' não encontrado.")
+
+    elif opcao == 3:
+        fone_busca = input("\n  Digite o TELEFONE: ")
+        encontrado = False
+        for i in range(len(telefone)):
+            if telefone[i] == fone_busca:
+                print(f"\nNOME:      {nome[i]}")
+                print(f"  VEÍCULO:   {veiculo[i]}")
+                print(f"  PLACA:     {placa[i]}")
+                print(f"  TELEFONE:  {telefone[i]}")
+                encontrado = True
+        if not encontrado:
+            print(f"\n  Nenhum colaborador com telefone '{fone_busca}'.")
+
+    elif opcao == 4:
+        busca = input("\n  Digite o NOME a deletar: ").upper()
+        encontrado = False
+        for i in range(len(nome)):
+            if nome[i] == busca:
+                nome.pop(i)
+                veiculo.pop(i)
+                placa.pop(i)
+                telefone.pop(i)
+                print(f"\n  Colaborador '{busca}' deletado com sucesso!")
+                encontrado = True
+                break
+        if not encontrado:
+            print(f"\n  Colaborador '{busca}' não encontrado.")
+
+    elif opcao == 5:
+        busca = input("\n  Digite o NOME a atualizar: ").upper()
+        encontrado = False
+        for i in range(len(nome)):
+            if nome[i] == busca:
+                print(f"\nDados atuais de '{busca}':")
+                print(f"  VEÍCULO:   {veiculo[i]}")
+                print(f"  PLACA:     {placa[i]}")
+                print(f"  TELEFONE:  {telefone[i]}")
+                print("\nDigite os novos dados:")
+                veiculo[i]  = input("  VEÍCULO: ").upper()
+                placa[i]    = input("  PLACA: ").upper()
+                telefone[i] = input("  TELEFONE: ")
+                print(f"\n  Cadastro de '{busca}' atualizado com sucesso!")
+                encontrado = True
+                break
+        if not encontrado:
+            print(f"\n  Colaborador '{busca}' não encontrado.")
+ 
+    elif opcao == 6:
+        print("\n  Encerrando o sistema kyFÓMY. Até logo!")
+ 
+    else:
+        print("\n  Opção inválida! Tente novamente.")

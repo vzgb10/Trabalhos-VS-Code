@@ -1,0 +1,27 @@
+n = int(input("\nDigite o tamanho da matriz (NxN): "))
+
+matriz = []
+print("\nVALORES DA MATRIZ")
+for i in range(n):
+    linha = []
+    for j in range(n):
+        valor = int(input(f"Valor do elemento [{i+1}][{j+1}]: "))
+        linha.append(valor)
+    matriz.append(linha)
+
+print("\nMATRIZ ORIGINAL: ")
+for i in range(n):
+    for j in range(n):
+        print(f"{matriz[i][j]}")
+
+transposta = []
+for i in range(n):
+    linha = []
+    for j in range(n):
+        linha.append(matriz[j][i])
+    transposta.append(linha)
+
+print("\nMATRIZ INVERTIDA: ")
+for i in range(n):
+    for j in range(n):
+        print(f"{transposta[i][j]}")

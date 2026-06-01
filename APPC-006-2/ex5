@@ -1,5 +1,4 @@
 veiculos = []
-
 quant = int(input("QUANTOS CARROS VOCÊ GOSTARIA DE CADASTRAR?  "))
 
 for x in range(1, quant + 1):
@@ -21,7 +20,6 @@ for x, aux in enumerate(veiculos, start=1):
     potencia = aux[3]
     print(f"{x} {tipo} {modelo} {cor} {potencia}")
 print(f"  Total: {len(veiculos)} veículo(s) cadastrado(s).")
-
 
 cor_busca = input("Digite a cor desejada: ").upper()
 encontrados=0
@@ -56,5 +54,4 @@ for x, aux in enumerate(veiculos, start=1):
         contagem += 1
 if contagem == 0:
     print(f"  Nenhum veículo encontrado com o modelo '{modelo_busca}'.")
-
 print(f"  Total do modelo '{modelo_busca}': {contagem} veículo(s).")

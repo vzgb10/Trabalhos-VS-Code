@@ -5,33 +5,33 @@ int main() {
     int parcelas;
     char refazer = 'S';
 
-    printf("\nValor Total da compra: ");
-    scanf("%f", &valorcompra);
-    printf("\nQuantidade de Parcelas: ");
-    scanf("%d", &parcelas);
+    while (refazer == 'S' || refazer == 's') {
+        printf("\nValor Total da compra: ");
+        scanf("%f", &valorcompra);
+        printf("\nQuantidade de Parcelas: ");
+        scanf("%d", &parcelas);
 
-    while (refazer == 'S' || refazer == 's')
         if (parcelas == 1) {
             valortotal = valorcompra - (valorcompra * 0.2);
             valorparcela = valortotal;
         }
-        else if (parcelas == 2 || parcelas == 3) {
+        else if (parcelas == 2) {
             valortotal = valorcompra + (valorcompra * 0.05);
             valorparcela = valortotal / parcelas;
         }
-        else if (parcelas >= 4 && parcelas <=7) {
+        else if (parcelas == 4) {
             valortotal = valorcompra + (valorcompra * 0.1);
             valorparcela = valortotal / parcelas;
         }
-        else if (parcelas == 8 || parcelas == 9) {
+        else if (parcelas == 8) {
             valortotal = valorcompra + (valorcompra * 0.15);
             valorparcela = valortotal / parcelas;
         }
-        else if (parcelas == 10 || parcelas == 11) {
+        else if (parcelas == 10) {
             valortotal = valorcompra + (valorcompra * 0.2);
             valorparcela = valortotal / parcelas;
         }
-        else if (parcelas >= 12 && parcelas <= 19) {
+        else if (parcelas == 12) {
             valortotal = valorcompra + (valorcompra * 0.25);
             valorparcela = valortotal / parcelas;
         }
@@ -41,7 +41,17 @@ int main() {
         }
         else {
             printf("\nERRO! Nós não aceiamos essa quantidade de parcelas...");
+            printf("\nDeseja refazer os calculos? (S/N) ");
+            scanf(" %c", &refazer);
+            
+            if (refazer == 'S' || refazer == 's') {
+                continue;
+            }
+            else {
+                break;
+            }
         }
+    }
 
     printf("\n**************************************************\n");
     printf("\nValor da Compra: R$%.2f", valorcompra);

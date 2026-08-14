@@ -7,7 +7,7 @@ int main()
     float taxa;
     float total_aplicado;
     int tempo;
-    int x = 0;
+    int x;
     int contmeses = 0;
     float ano = 0;
     float valor_aposentadoria;
@@ -21,7 +21,7 @@ int main()
     printf("\nTempo em meses que irá depositar: ");
     scanf("%d",&tempo);
     
-    for (x; x <= tempo; x++) {
+    for (x = 0; x <= tempo; x++) {
         printf("\nMês: %d --> Valor: R$%.2f", x, valor_inicial);
         valor_inicial = valor_inicial + (valor_inicial*taxa/100) + aporte_mensal;
         total_aplicado = valor_inicial;

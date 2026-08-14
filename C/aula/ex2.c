@@ -2,25 +2,35 @@
 #include <time.h>
 #include <stdio.h>
 
-void main() {
+int main() {
     rand();
     int numerocomput;
     int palpite;
+    int tentativas = 0;
 
     srand(time(NULL));
     numerocomput = rand()%100;
 
     printf("\nDIGITE UM NUMERO: ");
     scanf("%d", &palpite);
+    tentativas++;
 
-    if (palpite > numerocomput) {
-        printf("\nSEU NUMERO É MAIOR");
+    while (palpite != numerocomput) {
+
+        if (palpite > numerocomput) {
+            printf("\nSEU NUMERO É MAIOR");
+        }
+        if (palpite < numerocomput) {
+            printf("\nSEU NUMERO É MENOR");
+        }
+        
+        printf("\nDIGITE UM NUMERO: ");
+        scanf("%d", &palpite);
+        tentativas++;
     }
-    if (palpite < numerocomput) {
-        printf("\nSEU NUMERO É MENOR");
-    }
-    if (palpite == numerocomput) {
-        printf("\nPARABENS VOCE ACERTOU O NUMERO");
-    }
+    
+    printf("\nPARABENS VOCE ACERTOU O NUMERO!");
     printf("\nNUMERO ESCOLHIDO: %d", numerocomput);
+    printf("\nVOCE ACERTOU EM %d TENTATIVAS", tentativas);
+    return 0;
 }

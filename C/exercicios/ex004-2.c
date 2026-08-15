@@ -46,6 +46,7 @@ int main() {
         }
         x++;
     }
+    
     media = (float)soma / alunos;
 
     printf("\n*********************************************\n");

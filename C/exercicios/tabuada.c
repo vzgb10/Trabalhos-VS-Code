@@ -31,15 +31,18 @@ int main() {
 
         if (resposta == resultado) {
             printf("\nParabéns você acertou");
+            acertos ++;
+            tentativas ++;
         }
         else {
             printf("\nPutz... Você errou");
             printf("\nQuer tentar novamente? ");
-            scanf("%s", &)
-
+            scanf("%s", &continuar);
+            erros ++;
+            tentativas ++;
         }
-
     }
-
-
+    printf("\nACERTOS: %d", acertos);
+    printf("\nERROS: %d", erros);
+    printf("\nTENTATIVAS: %d", tentativas);
 }

@@ -1,0 +1,103 @@
+/* comentários
+
+sintese basica
+seletor {
+    propriedade : valor;
+    ...
+}
+
+1) seletor por tag
+*/
+body{
+    font-family: Arial, sans-serif; /*fonte do site*/
+    background-color: #858585; /*cor do site*/
+    margin: 0;  /*define a margem do site*/
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    /*deixou o texto h1 em branco e ao centro*/
+}
+
+h2 {
+    color: rgb(19, 18, 18); /*mudou o h2 para preto*/
+}
+
+p {
+    font-size: 15px; /*deixou o texto em 15 pixels*/
+}
+
+/*
+2) seletor por id
+*/
+#cabecalho {
+    background-color: #b60000;
+    color: white;
+    text-align: center;
+    padding: 90px;
+    padding-top: 100px;
+    border: 60px;
+}
+
+#rodape {
+    background-color: rgb(45, 56, 56);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/*
+3) seletor por class
+*/
+.caixa {
+    background-color: white;
+    width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto; /*serve para os 4 lados*/
+}
+
+.destaque {
+    color: rgb(37, 7, 209);
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgb(121, 121, 121);
+    padding: 10px;
+    border: 1px solid #cacaca;
+    border-radius: 8px;
+}
+
+.caixa-importante {
+    border: 3px solid rgb(75, 75, 75);
+}
+
+.quadrado {
+    /*elemento*/
+    width: 150px;
+    height: 100px;
+    background-color: #858585;
+    color: white;
+    margin: 20px;
+    text-align: center;
+    border: 2px solid #302929;
+    padding: 10px;
+}
+
+.box-model {
+    width: 300px;
+    padding: 30px;
+    border: 5px dotted #df5e08;
+    margin: 30px;
+    background-color: burlywood;
+}
+
+.card {
+    background-color: rgb(108, 165, 165);
+    width: 300px;
+    border: 1px solid #6787b6;
+    padding: 15px;
+    margin: 15px;
+}

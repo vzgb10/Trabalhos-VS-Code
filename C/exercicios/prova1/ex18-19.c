@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main() {
-    int bilhete, idade;
-    float cbu, distancia, rodado, descontoB, descontoU, custo;
+    int bilhete, idade, assento;
+    float cbu, distancia, rodado, descontoB, descontoU, acrescimo, custo;
     float total = 0;
 
     printf("\nDISTANCIA PERCORRIDA EM KM: ");
@@ -53,13 +53,43 @@ int main() {
         }
         printf("\nDESCONTO IDADE DA PESSOA %d: %.2f\n", x, descontoU);
 
-        custo = cbu * (1 - descontoB + descontoU);
+        do { /*exercicio 19*/
+            printf("\n1 - BASICO \n2 - PLANETARIO \n3 - ESTELAR \n4 - GALATICO \nQUAL O ASSENTO ESCOLHIDO? ");
+            scanf("%d", &assento);
+            switch (assento) {
+            case 1:
+                printf("\nASSENTO BASICO");
+                acrescimo = 0;
+                break;
+            case 2:
+                printf("\nASSENTO PLANETARIO");
+                acrescimo = 1.3;
+                break;
+            case 3:
+                printf("\nASSENTO ESTELAR");
+                acrescimo = 1.6;
+                break;
+            case 4:
+                printf("\nASSENTO GALATICO");
+                acrescimo = 2;
+                break;
+            default:
+                printf("\nERRO...");
+                printf("\nASSENTO NAO IDENTIFICADO.");
+                break;
+            }
+        }
+        while (assento < 1 || assento > 4);
+
+        custo = cbu * (1 - descontoB - descontoU) * (1 + acrescimo);
         total += custo;
     }
+    
     printf("\n****************************************\n");
-    printf("\nCBU: R$%.2f", cbu);
-    printf("\nDESCONTO POR BILHETE: %.2f", descontoB);
-    printf("\nVALOR TOTAL: R$%.2f", total);
+    printf("\nCBU:                   R$%.2f", cbu);
+    printf("\nDESCONTO POR BILHETE:  %.2f", descontoB);
+    printf("\nACRESCIMO POR BILHETE: %.2f", acrescimo);
+    printf("\nVALOR TOTAL:           R$%.2f", total);
 
     return 0;
 }

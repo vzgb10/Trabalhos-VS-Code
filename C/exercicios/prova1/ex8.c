@@ -11,7 +11,7 @@ int main() {
         soma = 0;
         do {
             digito = numero %10;
-            soma += digito*digito;
+            soma += digito;
             numero = numero /10;
             printf("\n  NUMERO: %d ---  SOMA: %d", numero, soma);
         }

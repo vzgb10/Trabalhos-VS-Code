@@ -51,7 +51,7 @@ body {
 .exemplo-inline {
     display: inline;
     background-color: #aed6f1;
-    border: 1pxsolid #239b56;
+    border: 1px solid #239b56;
     width: 500px;
     height: 100px;
     padding: 30px;

@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+#cabecalho {
+    background-color: #154c86;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#titulo {
+    color: white;
+}
+
+.menu {
+    color: white;
+    justify-content: center;
+}
+
+#introducao-corpo {
+    width: 450px;
+}
+
+#titulo-introducao {
+    color: #154c86;
+    font-size: 45px;
+}
+
+#corpo {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#conhecer{
+    background:#154c86;
+    color:white;
+    padding:10px;
+    width:190px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#fato{
+    background:#dce9f5;
+    border:2px solid #5fa8ff;
+    border-radius:10px;
+    height: 160px;
+    width: 190px;
+    text-align: center;
+}
+
+#alunos{
+    color:#154c86;
+    font-size:42px;
+}
+
+#introducao-cursos {
+    color: #154c86;
+    text-align: center;
+}
+
+#caixa {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.curso{
+    width:230px;
+    background:white;
+    border-radius:10px;
+    padding:20px;
+}
+
+.titulo-curso{
+    color:#154c86;
+}
+
+.descricao-curso{
+    color:#444;
+}
+
+.horas{
+    color:green;
+    font-weight:bold;
+}
+
+.saiba-mais{
+    background:#154c86;
+    color:white;
+    text-align:center;
+    padding:10px;
+    border-radius:5px;
+}
+
+#rodape{
+    background:#252323;
+    color:white;
+    text-align:center;
+    padding:10px;
+}

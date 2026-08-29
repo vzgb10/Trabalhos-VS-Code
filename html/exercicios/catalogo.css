@@ -9,10 +9,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 30px;
 }
 
 #titulo {
     color: white;
+}
+
+#menus {
+    display: flex;
+    gap: 30px;
+    align-items: center;
 }
 
 .menu {
@@ -34,6 +41,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 30px;
 }
 
 #conhecer{

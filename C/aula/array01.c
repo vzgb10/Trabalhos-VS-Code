@@ -3,14 +3,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-char numero[10][20]
-char buffer[1000]
+char numero[10][20];
+char buffer[1000];
 
 int main() {
     FILE *arq;
     int x;
+    int nlinhas = 0;
 
-    arq = fopen(IMAGEM001.txt,"r")
+    arq = fopen("IMAGEM001.txt","r");
+
+    if (arq == NULL) {
+    printf("Erro ao abrir o arquivo.\n");
+    return 1;
+    }
 
     strcpy (buffer,"guarany");
 
@@ -20,12 +26,13 @@ int main() {
         fgets(buffer, 300, arq);
 
         //substituir o /n por /0
-        buffer[strlen(buffer)-1]='\0'; //strlen(buffer) = tamanho do buffer n# caracteres
+        if (buffer[strlen(buffer) - 1] == '\n')
+        buffer[strlen(buffer) - 1] = '\0'; //strlen(buffer) = tamanho do buffer n# caracteres
 
         if (buffer[0]!='$') {
             //armazenar buffer em numero-linha por linha
             strcpy(numero[nlinhas], buffer);
-            nlinhas++
+            nlinhas++;
         }
     }
     fclose(arq);

@@ -40,6 +40,16 @@ int menu(){
     return opcao;
 }
 
+void lancamento();
+void consultarSaldo();
+void listarTodas();
+void listarTipo();
+void listarCodigo();
+void consultarLabel();
+void alterarOperacao();
+void gravarArquivo();
+void lerArquivo();
+
 int main() {
     int opcao;
 
@@ -261,10 +271,9 @@ void alterarOperacao() {
             printf("Digite o novo valor da operacao: ");
             scanf("%f", &operacoes[i].valor);
 
+            encontrou = 1;
             printf("Operacao alterada com sucesso!\n");
             return;
-
-            encontrou = 1;
         }
     }
     if (encontrou == 0) {
@@ -280,6 +289,7 @@ void gravarArquivo() {
     }
 
     for(int i = 0; i < cont; i++) {
+        printf("Granvando informacoes %d", operacoes[i].id);
         fprintf(arquivo, "%d\n", operacoes[i].id);
         fprintf(arquivo, "%d\n", operacoes[i].tipo);
         fprintf(arquivo, "%s\n", operacoes[i].label);
@@ -300,16 +310,18 @@ void lerArquivo() {
     }
 
     cont = 0; // Resetar contador antes de ler
-    while (fscanf(arquivo, "%d\n%d\n %[^\n]\n %[^\n]\n%d\n%f\n",
+    while (fscanf(arquivo, "%d %d  %29[^\n]  %999[^\n] %d %f",
                   &operacoes[cont].id,
                   &operacoes[cont].tipo,
                   operacoes[cont].label,
                   operacoes[cont].descricao,
                   &operacoes[cont].codigo,
-                  &operacoes[cont].valor) == 6) {
+                  &operacoes[cont].valor) == 6) 
+    {
+        printf("Operacao %d carregada!\n", operacoes[cont].id);
         cont++;
     }
 
     fclose(arquivo);
-    printf("Operacoes lidas com sucesso do arquivo!\n");
+    printf("Total de operacoes lidas: %d\n", cont);
 }

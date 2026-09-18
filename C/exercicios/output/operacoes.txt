@@ -1,0 +1,12 @@
+1
+1
+deposito
+deposito de dinheiro
+1
+5000.00
+2
+0
+retirada
+retirada de dinheiro
+2
+500.00

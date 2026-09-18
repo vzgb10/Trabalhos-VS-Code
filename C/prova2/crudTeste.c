@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <conio.h>
-#include <stdlib.h>
 
 struct dados {
     int id;
@@ -38,7 +36,7 @@ void lancamento() {
     printf("\n\nDescricao da Operacao: ");
     scanf(" %[^\n]", lancamento.descricao);
 
-    printf("\n\nCodigo da Operacao: \t0 - Despesas obrigatorias \t1 - Depositos \t2 - Pagamentos por Despesas nao Obrigatorias");
+    printf("\n\nCodigo da Operacao: \t0 - Despesas obrigatorias \t1 - Depositos \t2 - Pagamentos por Despesas nao Obrigatorias\n");
     scanf("%d", &lancamento.codigo);
     if(lancamento.codigo == 0 || lancamento.codigo == 1 || lancamento.codigo == 2) {
         printf("\nOpcao %d selecionada com sucesso!", lancamento.codigo);
@@ -48,8 +46,8 @@ void lancamento() {
         return;
     }
 
-    printf("Valor da Operacao: ");
-    scanf("%.2f", lancamento.valor);
+    printf("\nValor da Operacao: ");
+    scanf("%f", &lancamento.valor);
 
     vetor[cont] = lancamento;
     cont++;
@@ -59,7 +57,7 @@ void consultarSaldo() {
     struct dados consultarSaldo;
     float saldo = 0;
 
-    for(consultarSaldo.id == 0; consultarSaldo.id < cont; consultarSaldo.id++) {
+    for(consultarSaldo.id = 0; consultarSaldo.id < cont; consultarSaldo.id++) {
         if(vetor[consultarSaldo.id].tipo == 1) {
             saldo += vetor[consultarSaldo.id].valor;
         }
@@ -115,12 +113,12 @@ void listarCodigo() {
     int codigoConsulta;
     int encontrou = 0;
 
-    printf("Digite o tipo de operacao para listar: \t0 - Despesas obrigatorias \t1 - Depositos \t2 - Pagamentos por Despesas nao Obrigatorias");
+    printf("Digite o tipo de operacao para listar: \t0 - Despesas obrigatorias \t1 - Depositos \t2 - Pagamentos por Despesas nao Obrigatorias\n");
     scanf("%d", &codigoConsulta);
 
         printf("\n======= LISTAGEM DE OPERACOES PELO CODIGO =======");
     for(int x = 0; x < cont; x++) {
-        if(vetor[x].tipo == codigoConsulta) {
+        if(vetor[x].codigo == codigoConsulta) {
             printf("\nID:        %d", vetor[x].id);
             printf("\nTipo:      %d", vetor[x].tipo);
             printf("\nLabel:     %s", vetor[x].label);
@@ -197,6 +195,7 @@ void gravarDados() {
 
     if(arq == NULL) {
         printf("Erro ao abrir arquivo...");
+        return;
     }
 
     for(int x = 0; x < cont; x++) {
@@ -205,7 +204,7 @@ void gravarDados() {
         fprintf(arq, "%d\n", vetor[x].tipo);
         fprintf(arq, "%s\n", vetor[x].label);
         fprintf(arq, "%s\n", vetor[x].descricao);
-        fprintf(arq, "%f\n", vetor[x].codigo);
+        fprintf(arq, "%d\n", vetor[x].codigo);
         fprintf(arq, "%f\n", vetor[x].valor);
     }
     fclose(arq);
@@ -217,16 +216,17 @@ void lerDados() {
 
     if(arq == NULL) {
         printf("Erro ao ler arquivo...");
+        return;
     }
     cont = 0;
 
-    while(scanf("arq, %d %d  %29[^\n]  %999[^\n] %d %f",
-        vetor[cont].id,
-        vetor[cont].tipo,
+    while(fscanf(arq,"%d %d  %29[^\n]  %999[^\n] %d %f",
+        &vetor[cont].id,
+        &vetor[cont].tipo,
         vetor[cont].label,
         vetor[cont].descricao,
-        vetor[cont].codigo,
-        vetor[cont].valor)
+        &vetor[cont].codigo,
+        &vetor[cont].valor)
         == 6) {
         printf("\nOperacao %d carregada!", vetor[cont].id);
         cont++;
@@ -262,8 +262,7 @@ int main() {
     do {
         opcao = menu();
 
-        switch (opcao)
-        {
+        switch (opcao) {
         case 1:
             lancamento();
             break;

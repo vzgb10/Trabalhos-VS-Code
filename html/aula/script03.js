@@ -103,7 +103,7 @@ formulario.addEventListener("submit", function (event) {
     } else if (nome.length < 5) {
         mostrarErro(campoNome, erroNome, "O nome deve possuir pelo menos 5 caracteres!");
         formValido = false;
-    } else if (nopme.split(/\s+/).length < 2) {
+    } else if (nome.split(/\s+/).length < 2) {
         mostrarErro(campoNome, erroNome, "Informe nome e sobrenome!");
         formValido = false;
     }
@@ -115,15 +115,17 @@ formulario.addEventListener("submit", function (event) {
     } else if (campoEmail.validity.typeMismatch) {
         mostrarErro(campoEmail, erroEmail, "Insira um email válido!");
         formValido = false;
-    } else if (!email.endWith("@aluno.edu.br")) {
-        mostrarErro(campoEmail, erroEmail, "Insira um email @aluo.edu.br");
+    } else if (!email.endsWith("@aluno.edu.br")) {
+        mostrarErro(campoEmail, erroEmail, "Insira um email @aluno.edu.br");
         formValido = false;
     }
 
     // Validar matricula
     const formatoMatricula = /^[0-9]{8}$/ // ^ = string --- $ = fim da string
-    mostrarErro(campoMatricula, erroMatricula, "A matrícula deve ter exatamente 8 dígitos");
-    formValido = false;
+    if (!formatoMatricula.test(matricula)) {
+        mostrarErro(campoMatricula, erroMatricula, "A matrícula deve ter exatamente 8 dígitos");
+        formValido = false;
+    }
 
     // Validar data de nascimento
     if (dataNascimento === "") {
@@ -143,7 +145,7 @@ formulario.addEventListener("submit", function (event) {
     }
 
     // Validar semestre
-    if (!Number.isInteger{semestre} || semestre < 1 || semestre > 10) {
+    if (!Number.isInteger(semestre) || semestre < 1 || semestre > 10) {
         mostrarErro(campoSemestre, erroSemestre, "Informe um semestre válido!");
         formValido = false;
     }
@@ -157,9 +159,44 @@ formulario.addEventListener("submit", function (event) {
     if (senha.length < 8) {
         mostrarErro(campoSenha, erroSenha, "A senha deve ter exatamente 8 caracteres!");
         formValido = false;
-    } else if (!possuiEspecial || possuiMaiuscula || possuiMinuscula || possuiNumero) {
+    } else if (!possuiEspecial || !possuiMaiuscula || !possuiMinuscula || !possuiNumero) {
         mostrarErro(campoSenha, erroSenha, "A senha não atende aos critérios!");
         formValido = false;
     }
+    if (confirmaSenha === "") {
+    mostrarErro(campoConfirmacaoSenha, erroConfirmacaoSenha, "Confirme a senha!");
+    formValido = false;
+    } 
+    else if (senha !== confirmaSenha) {
+    mostrarErro(campoConfirmacaoSenha, erroConfirmacaoSenha, "As senhas não coincidem!");
+    formValido = false;
+    }
 
+    // Validar curso
+    if (curso === "") {
+    mostrarErro(campoCurso, erroCurso, "Selecione um curso!");
+    formValido = false;
+    }
+
+    // Validar termos
+    if (!campoTermos.checked) {
+    mostrarErro(campoTermos, erroTermos, "Você deve aceitar os termos!");
+    formValido = false;
+    }
+
+    // Mostrar validacao bem sucedida
+    if (formValido) {
+    painelResultado.classList.remove("d-none");
+
+    resultado.innerHTML = `
+        <strong>Cadastro realizado com sucesso!</strong><br><br>
+        Nome: ${nome}<br>
+        Email: ${email}<br>
+        Matrícula: ${matricula}<br>
+        Curso: ${curso}<br>
+        Semestre: ${semestre}
+    `;
+
+    formulario.reset();
+    }
 })

@@ -178,7 +178,7 @@ formulario.addEventListener("submit", function (event) {
     formValido = false;
     }
 
-    // Validar termos
+    // Validar termos (checkbox)
     if (!campoTermos.checked) {
     mostrarErro(campoTermos, erroTermos, "Você deve aceitar os termos!");
     formValido = false;
@@ -188,22 +188,11 @@ formulario.addEventListener("submit", function (event) {
     if (formValido) {
     painelResultado.classList.remove("d-none");
 	return;
+    }
 	
 	const aluno = {nome, email, matricula, dataNascimento, curso, semestre};
 	
 	console.log(aluno);
 	resultado.innerText = JSON.stringify(aluno, null, 2);
-	painelResultado.classList.remove("d-nome");
-
-    resultado.innerHTML = `
-        <strong>Cadastro realizado com sucesso!</strong><br><br>
-        Nome: ${nome}<br>
-        Email: ${email}<br>
-        Matrícula: ${matricula}<br>
-        Curso: ${curso}<br>
-        Semestre: ${semestre}
-    `;
-
-    formulario.reset();
-    }
+	painelResultado.classList.remove("d-none");
 })

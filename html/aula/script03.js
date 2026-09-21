@@ -187,6 +187,13 @@ formulario.addEventListener("submit", function (event) {
     // Mostrar validacao bem sucedida
     if (formValido) {
     painelResultado.classList.remove("d-none");
+	return;
+	
+	const aluno = {nome, email, matricula, dataNascimento, curso, semestre};
+	
+	console.log(aluno);
+	resultado.innerText = JSON.stringify(aluno, null, 2);
+	painelResultado.classList.remove("d-nome");
 
     resultado.innerHTML = `
         <strong>Cadastro realizado com sucesso!</strong><br><br>

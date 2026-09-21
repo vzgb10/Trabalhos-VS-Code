@@ -50,7 +50,6 @@ formulario.addEventListener("submit", function(event){
 
     let valido = true;
 
-    // Nome
     const nome = campoNome.value.trim();
 
     if(nome.length < 5){
@@ -61,13 +60,11 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Email (HTML já verifica formato)
     if(!campoEmail.checkValidity()){
         mostrarErro(campoEmail,"#erroEmail","Digite um e-mail válido.");
         valido = false;
     }
 
-    // Telefone
     const telefone = campoTelefone.value;
 
     const regexTelefone = /^[0-9]{11}$/;
@@ -77,7 +74,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Idade
     const nascimento = new Date(campoNascimento.value);
     const hoje = new Date();
 
@@ -98,7 +94,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Check-in
     const checkin = new Date(campoCheckin.value);
     const checkout = new Date(campoCheckout.value);
 
@@ -110,13 +105,11 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Check-out
     if(checkout <= checkin){
         mostrarErro(campoCheckout,"#erroCheckout","O check-out deve ser posterior ao check-in.");
         valido = false;
     }
 
-    // Hóspedes
     const hospedes = Number(campoHospedes.value);
 
     if(hospedes < 1 || hospedes > 5){
@@ -124,7 +117,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Tipo de quarto
     const quarto = campoQuarto.value;
 
     if(quarto === ""){
@@ -147,7 +139,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Senha
     const senha = campoSenha.value;
 
     const regexMaiuscula = /[A-Z]/;
@@ -163,7 +154,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Confirmar senha
     if(campoConfirmarSenha.value !== senha){
         mostrarErro(campoConfirmarSenha,
         "#erroConfirmarSenha",
@@ -172,7 +162,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Checkbox
     if(!campoAceite.checked){
         document.querySelector("#erroAceite").textContent =
         "Você deve aceitar as condições da reserva.";
@@ -180,7 +169,6 @@ formulario.addEventListener("submit", function(event){
         valido = false;
     }
 
-    // Reserva válida
     if(valido){
 
         const diarias = Math.floor(

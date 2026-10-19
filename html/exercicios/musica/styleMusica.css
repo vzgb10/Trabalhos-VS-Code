@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f5fa;
+    color: #29263d;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.topo {
+    background: white;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e7e5f0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone {
+    background: #4a3b99;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+}
+
+.logo h1 {
+    font-size: 22px;
+}
+
+.logo p {
+    font-size: 12px;
+    color: #858397;
+}
+
+.status {
+    font-size: 12px;
+    background: #f0edff;
+    color: #6c4ce3;
+    padding: 9px 12px;
+    border-radius: 20px;
+}
+
+.status.online {
+    color: #18794e;
+    background: #e8f7ee;
+}
+
+.status.offline {
+    color: #b42318;
+    background: #fff0ef;
+}
+
+.container {
+    width: 86%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.banner {
+    background: #4a3b99;
+    color: white;
+    padding: 35px;
+    border-radius: 18px;
+    margin-bottom: 22px;
+}
+
+.subtitulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #ddd5ff;
+    font-weight: bold;
+}
+
+.banner h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.banner p:last-child {
+    font-size: 14px;
+    color: #eeeaff;
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.cartao {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid #e7e5f0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cartao span {
+    color: #77758c;
+    font-size: 13px;
+}
+
+.cartao strong {
+    font-size: 28px;
+    color: #6c4ce3;
+}
+
+.painel {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #e7e5f0;
+    margin-bottom: 22px;
+}
+
+.painel h2 {
+    font-size: 21px;
+}
+
+.descricao {
+    font-size: 13px;
+    color: #858397;
+    margin-top: 6px;
+}
+
+.campos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 23px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #504e65;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dedce9;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+    color: #29263d;
+    font-size: 13px;
+}
+
+input:focus, select:focus {
+    border-color: #6c4ce3;
+    box-shadow: 0 0 0 2px #6c4ce322;
+}
+
+.botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.botao {
+    padding: 11px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.principal {
+    background: #4a3b99;
+    color: white;
+}
+
+.principal:hover {
+    background: #5134c4;
+}
+
+.cancelar {
+    background: #f2f1f8;
+    color: #55536a;
+    border: 1px solid #e5e3ed;
+}
+
+.cancelar:hover {
+    background: #e8e6f2;
+}
+
+#mensagemFormulario {
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.sucesso {
+    color: #18794e;
+}
+
+.erro {
+    color: #c12c35;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 12px;
+    align-items: end;
+    padding: 22px 0;
+    margin-top: 15px;
+    border-bottom: 1px solid #e7e5f0;
+}
+
+.resultado {
+    font-size: 12px;
+    color: #858397;
+    margin: 15px 0;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background: #f7f6fb;
+}
+
+th {
+    color: #77758c;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+th, td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #eeedf4;
+}
+
+td {
+    font-size: 12px;
+}
+
+tbody tr:hover {
+    background: #fbfaff;
+}
+
+.nome-musica {
+    font-weight: bold;
+    color: #29263d;
+}
+
+.nome-artista {
+    font-size: 11px;
+    color: #858397;
+    margin-top: 4px;
+}
+
+.etiqueta {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.ativa {
+    color: #18794e;
+    background: #e8f7ee;
+}
+
+.inativa {
+    color: #9a620e;
+    background: #fff2d9;
+}
+
+.acoes-tabela {
+    display: flex;
+    gap: 6px;
+}
+
+.botao-acao {
+    padding: 7px 9px;
+    border: 1px solid #e5e3ed;
+    border-radius: 6px;
+    background: white;
+    color: #57556b;
+    font-size: 11px;
+}
+
+.botao-acao:hover {
+    background: #f0edff;
+    color: #4a3b99;
+}
+
+.botao-acao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.observacao {
+    color: #9290a2;
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    color: #9290a2;
+    font-size: 12px;
+    padding: 10px 0 25px;
+}
+
+@media (max-width: 850px) {
+    .container {
+        width: 92%;
+    }
+
+    .campos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filtros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .topo {
+        padding: 15px 4%;
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    .status {
+        font-size: 10px;
+    }
+
+    .container {
+        width: 94%;
+        margin-top: 18px;
+    }
+
+    .banner {
+        padding: 25px 20px;
+    }
+
+    .banner h2 {
+        font-size: 23px;
+    }
+
+    .resumo {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .cartao {
+        padding: 15px;
+    }
+
+    .painel {
+        padding: 20px 14px;
+    }
+
+    .campos, .filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .botoes {
+        flex-direction: column-reverse;
+    }
+
+    .botoes button {
+        width: 100%;
+    }
+}

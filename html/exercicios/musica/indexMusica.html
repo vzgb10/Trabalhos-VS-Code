@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicoteca</title>
+    <link rel="stylesheet" href="styleMusica.css">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="logo">
+            <h1>Musicoteca</h1>
+            <p>Seu catálogo musical</p>
+        </div>
+
+        <span id="statusApi" class="status">
+            Verificando API...
+        </span>
+    </header>
+
+    <main class="container">
+
+        <section class="banner">
+            <p class="subtitulo">CATÁLOGO MUSICAL</p>
+            <h2>Suas músicas, em um só lugar.</h2>
+            <p>Cadastre, consulte e organize suas músicas favoritas.</p>
+        </section>
+
+        <section class="resumo">
+            <div class="cartao">
+                <span>Total de músicas</span>
+                <strong id="totalMusicas">0</strong>
+            </div>
+
+            <div class="cartao">
+                <span>Músicas ativas</span>
+                <strong id="totalAtivas">0</strong>
+            </div>
+
+            <div class="cartao">
+                <span>Músicas inativas</span>
+                <strong id="totalInativas">0</strong>
+            </div>
+        </section>
+
+        <section class="painel">
+            <h2 id="tituloFormulario">Cadastrar música</h2>
+            <p class="descricao">
+                Preencha os campos para adicionar uma música ao catálogo.
+            </p>
+
+            <form id="formMusica">
+                <input type="hidden" id="idMusica">
+
+                <div class="campos">
+                    <label>
+                        Título *
+                        <input type="text" id="titulo"
+                               placeholder="Nome da música" required>
+                    </label>
+
+                    <label>
+                        Artista *
+                        <input type="text" id="artista"
+                               placeholder="Nome do artista" required>
+                    </label>
+
+                    <label>
+                        Gênero *
+                        <input type="text" id="genero"
+                               placeholder="Ex.: Rock" required>
+                    </label>
+
+                    <label>
+                        Ano de lançamento *
+                        <input type="number" id="anoLancamento"
+                               placeholder="Ex.: 1990" min="1" required>
+                    </label>
+
+                    <label>
+                        Duração em segundos *
+                        <input type="number" id="duracao"
+                               placeholder="Ex.: 279" min="1" required>
+                    </label>
+
+                    <label id="campoSituacao" hidden>
+                        Situação
+                        <select id="situacao">
+                            <option value="Ativa">Ativa</option>
+                            <option value="Inativa">Inativa</option>
+                        </select>
+                    </label>
+                </div>
+
+                <p id="mensagemFormulario"></p>
+
+                <div class="botoes">
+                    <button type="button" id="cancelarEdicao"
+                            class="botao cancelar" hidden>
+                        Cancelar
+                    </button>
+
+                    <button type="submit" id="botaoSalvar"
+                            class="botao principal">
+                        Cadastrar música
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="painel">
+            <div class="cabecalho">
+                <div>
+                    <h2>Catálogo de músicas</h2>
+                    <p class="descricao">
+                        Consulte, filtre e gerencie as músicas cadastradas.
+                    </p>
+                </div>
+
+                <button id="atualizarLista" class="botao cancelar"
+                        type="button">
+                    Atualizar lista
+                </button>
+            </div>
+
+            <div class="filtros">
+                <label>
+                    Buscar artista
+                    <input type="search" id="filtroArtista"
+                           placeholder="Nome do artista">
+                </label>
+
+                <label>
+                    Filtrar gênero
+                    <input type="text" id="filtroGenero"
+                           placeholder="Ex.: Rock">
+                </label>
+
+                <label>
+                    Situação
+                    <select id="filtroSituacao">
+                        <option value="">Todas</option>
+                        <option value="Ativa">Ativas</option>
+                        <option value="Inativa">Inativas</option>
+                    </select>
+                </label>
+
+                <button id="limparFiltros" type="button"
+                        class="botao cancelar">
+                    Limpar filtros
+                </button>
+            </div>
+
+            <p id="resultadoFiltro" class="resultado"></p>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Música</th>
+                            <th>Gênero</th>
+                            <th>Ano</th>
+                            <th>Duração</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="corpoTabela">
+                        <tr>
+                            <td colspan="6">Carregando músicas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="observacao">
+                A duração é mostrada em minutos e segundos.
+                As músicas inativadas continuam salvas no catálogo.
+            </p>
+        </section>
+
+        <footer>
+            Musicoteca - Projeto de API com Node.js e Express
+        </footer>
+
+    </main>
+    <script src="scriptMusica.js" defer></script>
+</body>
+</html>
+```

@@ -49,7 +49,7 @@ async function buscarAlunoApi(ra) {
 }
 
 async function cadastrarAlunoApi(aluno) {
-  // TODO Aula 09:
+// TODO Aula 09:
   // POST http://localhost:3000/alunos
   // headers: { "Content-Type": "application/json" }
   // body: JSON.stringify(aluno)

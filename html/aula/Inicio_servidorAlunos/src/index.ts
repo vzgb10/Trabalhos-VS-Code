@@ -1,5 +1,14 @@
 import express, {Request, Response} from "express";
 import cors from "cors";
+import oracledb from "oracledb";
+
+async function getConn() {
+    return await oracledb.getConnection({
+        user: "BD21082615",
+        password: "Etqdu10",
+        connectString: "localhost:1521/XEPDB1"
+    });
+}
 
 const app = express();
 const PORT = 3000;
@@ -46,8 +55,21 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello World!");
 });
 
-app.get("/alunos", (req: Request, res:Response) => {
-    return res.status(200).json(alunos);
+app.get("/alunos", async (req: Request, res:Response) => {
+    let conn;
+    try {
+        conn = await getConn();
+        const result = await conn.execute(
+            `SELECT ra as "ra", nome as "nome", email as "email", curso as "curso", semestre as "semestre", situacao as "situacao"
+            FROM alunos`
+        );
+        res.json(result.rows);
+    } catch (erro) {
+        console.error("Erro ao buscar alunos:", erro);
+        res.status(500).json({ mensagem: "Erro na consulta" });
+    } finally {
+        if (conn) await conn.close();
+    }
 });
 
 app.get("/alunos/:ra", (req:Request, res:Response) => {
